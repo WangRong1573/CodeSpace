@@ -20,4 +20,12 @@ public class TestException {
     public void testFailed(){
         System.out.println("没有抛出异常信息");
     }
+
+    //除数不能为0异常，如果有除数为0的异常，则运行成功
+    @Test(expectedExceptions = ArithmeticException.class)
+    public void testZero(){
+        int i=3/0;
+        //除数不为0时应该抛出异常
+        int j=20/3;
+    }
 }
