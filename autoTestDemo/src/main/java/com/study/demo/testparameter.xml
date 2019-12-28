@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="测试套件练习">
+    <test name="参数化测试">
+        <parameter name="username" value="xiaoqiang"></parameter>
+        <parameter name="password" value="113458"></parameter>
+        <classes>
+            <class name="com.study.demo.TestParam"></class>
+        </classes>
+    </test>
+</suite>
