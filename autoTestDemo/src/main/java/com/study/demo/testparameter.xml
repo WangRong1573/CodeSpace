@@ -6,6 +6,8 @@
         <parameter name="password" value="113458"></parameter>
         <classes>
             <class name="com.study.demo.TestParam"></class>
+            <class name="com.study.demo.TestParameter2"></class>
+            <class name="com.study.demo.TestParameter3"></class>
         </classes>
     </test>
 </suite>
