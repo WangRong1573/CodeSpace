@@ -7,12 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * threadPoolSize  控制线程数  invocationCount控制执行次数
  * @author rong.wang
  * @date 19:18  2019/12/29
  */
 public class TestLoginMap {
 
-    @Test(dataProvider = "testLoginMap")
+    @Test(threadPoolSize = 3,dataProvider = "testLoginMap",invocationCount = 10)
     public void testLoginMap(Map<String,String> map){
         System.out.println(map);
     }
