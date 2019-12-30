@@ -1,4 +1,4 @@
-package com.study.demo;
+package com.study.thread;
 
 import org.testng.annotations.Test;
 
@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
  * @author rong.wang
  * @date 22:19  2019/12/30
  */
-public class TestThread {
+public class TestThread4 {
     @Test
     public void test1(){
         //获取进程的ID

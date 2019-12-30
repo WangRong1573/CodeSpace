@@ -3,12 +3,12 @@
 <suite name="多线程" parallel="tests" thread-count="3">
     <test name="多线程1">
         <classes>
-            <class name="com.study.demo.TestThread"></class>
+            <class name="com.study.thread.TestThread"></class>
         </classes>
     </test>
     <test name="多线程2">
         <classes>
-            <class name="com.study.demo.TestThread2"></class>
+            <class name="com.study.thread.TestThread2"></class>
         </classes>
     </test>
 </suite>
