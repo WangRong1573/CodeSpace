@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 /**
  * Xml实现多线程测试，了解各标签的含义和用法
+ * 不同的test标签下的用例可以在不同的线程下执行
  * @author rong.wang
  * @date 22:19  2019/12/30
  */
