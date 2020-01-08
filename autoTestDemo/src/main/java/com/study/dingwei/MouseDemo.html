@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件练习案例</title>
+</head>
+<script>
+    function mousedown() {
+        document.getElementById("mouse").innerText = "鼠标按下操作";
+    }
+
+    function mouseup() {
+        alert("鼠标抬起操作");
+    }
+
+    function οnclick() {
+        alert("鼠标单击操作");
+    }
+
+    function οndblclick() {
+        alert("鼠标双击操作");
+    }
+
+    function οnmοuseοver() {
+        document.getElementById("mouse1").style.background = "#FF6699";
+    }
+
+    function mοuseout() {
+        alert("鼠标离开操作");
+    }
+
+
+    function mοuseMove() {
+        alert("鼠标移动操作");
+    }
+    function change() {
+        document.getElementById("mouse6").style.background = "#44aa44";
+    }
+
+
+</script>
+<body>
+<button id="mouse" onmousedown="mousedown()" onmouseup="mouseup()">鼠标按下和抬起</button>
+<button id="mouse1" onmouseover="οnmοuseοver()" onmouseout="mοuseout()">鼠标悬浮和离开</button>
+<button id="mouse6" onmousemove="change()">要移动到的位置</button>
+<button id="mouse2" onclick="οnclick()">鼠标单击</button>
+<button id="mouse3" ondblclick="οndblclick()">鼠标双击</button>
+<button id="mouse4" onmousemove="mοuseMove()">鼠标移动</button>
+<button id="mouse5">点击我右击</button>
+<script type="text/javascript">
+    //这一步是为了阻止右击时系统默认的弹出框
+    document.getElementById("btn1").oncontextmenu = function (e) {
+        e.preventDefault();
+    };
+    //在这里你就可以自己定义事件的函数啦
+    document.getElementById("mouse5").onmouseup = function (oEvent) {
+        if (!oEvent) oEvent = window.event;
+        if (oEvent.button == 2) {
+            alert('鼠标右击了')
+        }
+    }
+</script>
+</body>
+</html>
