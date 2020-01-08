@@ -28,8 +28,11 @@ public class TestSendkey {
 
     @Test
     public void testSendkey(){
-        driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys("rongwang");
+        WebElement username = driver.findElement(By.id("username"));
+        //获取元素对应的属性值
+        System.out.println(username.getAttribute("value"));
+        username.clear();
+        username.sendKeys("rongwang");
         pause(2);
         WebElement password = driver.findElement(By.id("password"));
         password.sendKeys("122345");
