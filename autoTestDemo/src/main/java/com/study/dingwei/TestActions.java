@@ -42,8 +42,34 @@ public class TestActions {
 //        WebElement mouse5 = driver.findElement(By.id("mouse5"));
 //        actions.contextClick(mouse5).perform();
 
-        //鼠标移动到元素
-        WebElement mouse4 = driver.findElement(By.id("mouse4"));
-        actions.moveToElement(mouse4).perform();
+//        //鼠标移动到元素
+//        WebElement mouse4 = driver.findElement(By.id("mouse4"));
+//        actions.moveToElement(mouse4).perform();
+
+//        //鼠标按下和抬起
+//        WebElement mouse = driver.findElement(By.id("mouse"));
+//        actions.clickAndHold(mouse).perform();
+//        actions.release(mouse).perform();
+
+//        //鼠标的悬浮和离开
+//        WebElement mouse1 = driver.findElement(By.id("mouse1"));
+//        WebElement mouse3 = driver.findElement(By.id("mouse3"));
+//        actions.moveToElement(mouse1).perform();
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        actions.moveToElement(mouse3).perform();
+
+        //鼠标的悬浮和离开实现方式2(这种方法只是释放了点击操作，并没有离开元素，实现方式有误)
+        WebElement mouse1 = driver.findElement(By.id("mouse1"));
+        actions.clickAndHold(mouse1).perform();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        actions.release(mouse1).perform();
     }
 }
