@@ -37,9 +37,23 @@ public class TestGeneric {
         }
     }
 
+    /**
+     *泛型集合可以添加泛型的子类型的对象实例
+     */
+    public void child(){
+        System.out.println("***************");
+        ChildCourse ccr=new ChildCourse();
+        ccr.id=3;
+        ccr.name="我是子类型的对象的实例";
+        courses.add(ccr);
+    }
+
     public static void main(String[] args) {
         TestGeneric tg=new TestGeneric();
         tg.testAdd();
+        tg.testForeach();
+
+        tg.child();
         tg.testForeach();
     }
 }
