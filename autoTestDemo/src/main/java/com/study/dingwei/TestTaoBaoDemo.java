@@ -45,11 +45,11 @@ public class TestTaoBaoDemo {
             }
         }
 
-        windowHandle = driver.getWindowHandle();
+        String oldwindowHandle = driver.getWindowHandle();
         driver.findElement(By.linkText("登录")).click();
-        windowHandles = driver.getWindowHandles();
-        for (String win:windowHandles) {
-            if (!windowHandle.equals(win)){
+        Set<String> newwindowHandles = driver.getWindowHandles();
+        for (String win:newwindowHandles) {
+            if (!oldwindowHandle.equals(win)){
                 driver.switchTo().window(win);
                 break;
             }else {
