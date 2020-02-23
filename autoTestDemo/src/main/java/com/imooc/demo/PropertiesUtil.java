@@ -26,8 +26,8 @@ public class PropertiesUtil {
         InputStream ins= null;
         try {
             ins = new FileInputStream(filePath);
-            BufferedInputStream bis=new BufferedInputStream(ins);
-            properties.load(bis);
+            InputStreamReader reader = new InputStreamReader(ins,"GBK");
+            properties.load(reader);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

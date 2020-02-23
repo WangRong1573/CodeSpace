@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -17,8 +18,9 @@ import java.util.concurrent.TimeUnit;
  * @date 11:28  2020/2/22
  * 自动截图
  */
+@Listeners(TestngListenerScreenShot.class)
 public class LoginDemo6 {
-    public WebDriver driver;
+    public static WebDriver driver;
     @BeforeTest
     public void beforeTest(){
         System.setProperty("webdriver.chrome.driver","chromedriver.exe");
@@ -62,12 +64,18 @@ public class LoginDemo6 {
         WebElement name = this.element(this.byStr("name"));
         System.out.println(name.getText());
         if (name.getText().equals("慕仰2316096")){
-            this.takeScreenShot();            System.out.println("登录成功");
+            System.out.println("登录成功");
         }else {
             System.out.println("登录信息错误");
         }
     }
 
+
+    /**
+     * 封装By
+     * @param key
+     * @return
+     */
     public By byStr(String key){
         PropertiesUtil propertiesUtil=new PropertiesUtil("G:\\CodeSpace\\autoTestDemo\\element.properties");
         String locator = propertiesUtil.getProp(key);
@@ -84,6 +92,10 @@ public class LoginDemo6 {
         }
     }
 
+    /**
+     * 等待
+     * @param i
+     */
     public void pause(int i){
         try {
             Thread.sleep(1000*i);
@@ -92,6 +104,11 @@ public class LoginDemo6 {
         }
     }
 
+    /**
+     * Elenment封装
+     * @param by
+     * @return
+     */
     public WebElement element(By by){
         WebElement ele=driver.findElement(by);
         return ele;
@@ -110,7 +127,7 @@ public class LoginDemo6 {
         path=path+".png";
         //截图路径
         String screenPath=userPath+"/"+path;
-        File screenshotAs = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File screenshotAs = ((TakesScreenshot)LoginDemo6.driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(screenshotAs,new File(screenPath));
         } catch (IOException e) {
