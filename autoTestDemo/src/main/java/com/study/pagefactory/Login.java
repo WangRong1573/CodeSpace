@@ -10,6 +10,6 @@ public class Login {
     @Test
     public void login(){
         LoginStep loginStep=new LoginStep();
-        loginStep.step("18272691567","yucheng2017","登陆成功");
+        loginStep.step("18272691567","yucheng2017","");
     }
 }

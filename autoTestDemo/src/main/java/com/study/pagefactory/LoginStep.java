@@ -20,5 +20,13 @@ public class LoginStep {
 
         String errorMsg = loginPage.getErrorMsg();
         Assert.assertEquals(errorMsg,expected);
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        basePage.close();
     }
 }
