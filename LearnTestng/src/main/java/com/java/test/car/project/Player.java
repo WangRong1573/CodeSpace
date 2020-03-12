@@ -38,4 +38,62 @@ public class Player {
         }
         return null;
     }
+
+    //选品牌
+    public String chooseCar(int num){
+        String brand=null;
+        int brandId;
+        int num1=(num==1?1:2);
+        if (num1==1){
+            System.out.println("请选择品牌： 1.宝马\t2.别克");
+            brandId=input.nextInt();
+            brand=(brandId==1?"宝马":"别克");
+        }else {
+            System.out.println("请选择品牌： 1.金杯\t2.金龙");
+            brandId=input.nextInt();
+            brand=(brandId==1?"金杯":"金龙");
+        }
+        return brand;
+    }
+
+    //选型号
+    public String chooseType(String brand){
+        int typeId;
+        String type=null;
+        if ("宝马".equals(brand)||"别克".equals(brand)){
+            if ("宝马".equals(brand)){
+                System.out.println("请选择你要订的型号： 1.X6\t2.550i");
+                typeId=input.nextInt();
+                type=(typeId==1?"x6":"550i");
+            }else {
+                System.out.println("请选择你要订的型号： 1.林荫大道\t2.GL8");
+                typeId=input.nextInt();
+                type=(typeId==1?"林荫大道":"GL8");
+            }
+        }else {
+            type=null;
+        }
+        return type;
+    }
+
+    //选座位数
+    public int chooseNum(String brand){
+        int typeId;
+        int num=-1;
+        if ("宝马".equals(brand)||"别克".equals(brand)){
+            num=0;
+        }else {
+            if ("金杯".equals(brand)){
+                System.out.println("请选择你要订的座位数： 1.16\t2.34");
+                typeId=input.nextInt();
+                num=(typeId==1?16:34);
+            }else {
+                System.out.println("请选择你要订的座位数： 1.16\t2.34");
+                typeId=input.nextInt();
+                num=(typeId==1?16:34);
+            }
+        }
+        return num;
+    }
+
 }
