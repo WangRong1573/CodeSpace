@@ -77,7 +77,7 @@ public class Base {
      * @return
      */
     public String getErrMsg(){
-        return driver.findElement(errMsg).getText();
+        return driver.findElement(errMsg).getText().trim();
     }
 
 }
