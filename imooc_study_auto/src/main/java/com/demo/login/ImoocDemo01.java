@@ -28,21 +28,27 @@ public class ImoocDemo01 {
     }
 
     //封装By
-    public By getBy(String by,String loval){
-        if (by.equals("id")){
-            return By.id(loval);
-        }else if (by.equals("name")){
-            return By.name(loval);
-        }else if (by.equals("cssSelector")){
-            return By.cssSelector(loval);
-        }else if (by.equals("linkText")){
-            return By.linkText(loval);
-        }else if (by.equals("className")){
-            return By.className(loval);
-        }else if (by.equals("xpath")){
-            return By.xpath(loval);
-        }else if (by.equals("tagName")){
-            return By.tagName(loval);
+    public By getBy(String key){
+
+        ProUtil proUtil = new ProUtil("element.properties");
+        String local = proUtil.getPro(key);
+        String localType = local.split(">")[0];
+        String localValue = local.split(">") [1];
+
+        if (localType.equals("id")){
+            return By.id(localValue);
+        }else if (localType.equals("name")){
+            return By.name(localValue);
+        }else if (localType.equals("cssSelector")){
+            return By.cssSelector(localValue);
+        }else if (localType.equals("linkText")){
+            return By.linkText(localValue);
+        }else if (localType.equals("className")){
+            return By.className(localValue);
+        }else if (localType.equals("xpath")){
+            return By.xpath(localValue);
+        }else if (localType.equals("tagName")){
+            return By.tagName(localValue);
         }else {
             throw new RuntimeException("定位信息错误");
         }
@@ -66,31 +72,32 @@ public class ImoocDemo01 {
     public void loginScript(){
         this.initDriver();
 
-        //用户名
+//        //用户名
         String username="18272691567";
-        String userBy="name";
-        String userElement="email";
-        //密码
+//        String userBy="name";
+//        String userElement="email";
+//        //密码
         String userpass="yucheng2017";
-        String passBy="name";
-        String passElement="password";
-        //登录按钮
-        String buttonBy="className";
-        String buttonElement="moco-btn";
-        //header
-        String headerBy="id";
-        String headerElement="header-avator";
-        //text
-        String textBy="cssSelector";
-        String textElemnt=".text-ellipsis";
+//        String passBy="name";
+//        String passElement="password";
+//        //登录按钮
+//        String buttonBy="className";
+//        String buttonElement="moco-btn";
+//        //header
+//        String headerBy="id";
+//        String headerElement="header-avator";
+//        //text
+//        String textBy="cssSelector";
+//        String textElemnt=".text-ellipsis";
 
-        element(getBy(userBy,userElement)).sendKeys(username);
-        element(getBy(passBy,passElement)).sendKeys(userpass);
-        element(getBy(buttonBy,buttonElement)).click();
-        WebElement header = element(getBy(headerBy,headerElement));
+
+        element(getBy("userdata")).sendKeys(username);
+        element(getBy("password")).sendKeys(userpass);
+        element(getBy("button")).click();
+        WebElement header = element(getBy("header"));
         Actions actions = new Actions(driver);
         actions.moveToElement(header).perform();
-        String text = element(getBy(textBy,textElemnt)).getText();
+        String text = element(getBy("text")).getText();
         System.out.println(text);
         if (text.equals("慕仰2316096")){
             System.out.println("登录成功");
