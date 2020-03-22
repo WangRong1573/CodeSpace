@@ -53,21 +53,21 @@ public class LoginDemo {
             }
         }
         //css定位登录按钮并点击
-        driver.findElement(getBy("cssSelector","a#js-signin-btn")).click();
+        findElement(getBy("cssSelector","a#js-signin-btn")).click();
 
-        driver.findElement(getBy("name","email")).sendKeys("18272691567");
+        findElement(getBy("name","email")).sendKeys("18272691567");
 
-        driver.findElement(getBy("name","password")).sendKeys("yucheng2017");
+        findElement(getBy("name","password")).sendKeys("yucheng2017");
 
-        driver.findElement(getBy("className","moco-btn")).click();
+        findElement(getBy("className","moco-btn")).click();
 
-        WebElement userHeader = driver.findElement(getBy("id", "header-avator"));
+        WebElement userHeader =findElement(getBy("id", "header-avator"));
         //鼠标移动到头像
         Actions actions = new Actions(driver);
         actions.moveToElement(userHeader).perform();
 
         //获取用户名信息
-        String userText = driver.findElement(getBy("cssSelector", ".text-ellipsis")).getText();
+        String userText =findElement(getBy("cssSelector", ".text-ellipsis")).getText();
         System.out.println(userText);
 
         Assert.assertEquals(userText,"慕仰2316096");
@@ -81,9 +81,16 @@ public class LoginDemo {
         driver.quit();
     }
 
+
+    //封装element
+    public WebElement findElement(By by){
+        WebElement element = driver.findElement(by);
+        return element;
+    }
+
     public WebElement findElement(String method,String methodValue){
 
-        return driver.findElement(getBy(method,methodValue));
+        return findElement(getBy(method,methodValue));
     }
 
     //封装By
@@ -106,4 +113,5 @@ public class LoginDemo {
         }
         return by;
     }
+
 }
