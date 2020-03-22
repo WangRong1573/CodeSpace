@@ -24,22 +24,90 @@ public class ImoocDemo01 {
         driver.get("https://www.imooc.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElement(By.cssSelector("a#js-signin-btn")).click();
+    }
+
+    //封装By
+    public By getBy(String by,String loval){
+        if (by.equals("id")){
+            return By.id(loval);
+        }else if (by.equals("name")){
+            return By.name(loval);
+        }else if (by.equals("cssSelector")){
+            return By.cssSelector(loval);
+        }else if (by.equals("linkText")){
+            return By.linkText(loval);
+        }else if (by.equals("className")){
+            return By.className(loval);
+        }else if (by.equals("xpath")){
+            return By.xpath(loval);
+        }else if (by.equals("tagName")){
+            return By.tagName(loval);
+        }else {
+            throw new RuntimeException("定位信息错误");
+        }
+    }
+
+    //封装element
+    public WebElement element(By by){
+        WebElement element = driver.findElement(by);
+        return element;
+    }
+
+    //等待
+    public void pause(int i){
+        try {
+            Thread.sleep(1000*i);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void loginScript(){
         this.initDriver();
-        driver.findElement(By.cssSelector("a#js-signin-btn")).click();
-        driver.findElement(By.name("email")).sendKeys("18272691567");
-        driver.findElement(By.name("password")).sendKeys("yucheng2017");
-        driver.findElement(By.className("moco-btn")).click();
-        WebElement element = driver.findElement(By.id("header-avator"));
+
+        //用户名
+        String username="18272691567";
+        String userBy="name";
+        String userElement="email";
+        //密码
+        String userpass="yucheng2017";
+        String passBy="name";
+        String passElement="password";
+        //登录按钮
+        String buttonBy="className";
+        String buttonElement="moco-btn";
+        //header
+        String headerBy="id";
+        String headerElement="header-avator";
+        //text
+        String textBy="cssSelector";
+        String textElemnt=".text-ellipsis";
+
+        element(getBy(userBy,userElement)).sendKeys(username);
+        element(getBy(passBy,passElement)).sendKeys(userpass);
+        element(getBy(buttonBy,buttonElement)).click();
+        WebElement header = element(getBy(headerBy,headerElement));
         Actions actions = new Actions(driver);
-        actions.moveToElement(element);
-        System.out.println(element.getText());
+        actions.moveToElement(header).perform();
+        String text = element(getBy(textBy,textElemnt)).getText();
+        System.out.println(text);
+        if (text.equals("慕仰2316096")){
+            System.out.println("登录成功");
+        }else {
+            System.out.println("请检查登录信息是否正确");
+        }
+
+        pause(2);
+        driver.quit();
     }
 
     public static void main(String[] args) {
         ImoocDemo01 imoocDemo01 = new ImoocDemo01();
         imoocDemo01.loginScript();
     }
+
+
+
+
 }
