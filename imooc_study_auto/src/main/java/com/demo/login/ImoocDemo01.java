@@ -1,11 +1,12 @@
 package com.demo.login;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -101,12 +102,32 @@ public class ImoocDemo01 {
         System.out.println(text);
         if (text.equals("慕仰2316096")){
             System.out.println("登录成功");
-        }else {
+            this.takeScreenShot();        }else {
             System.out.println("请检查登录信息是否正确");
         }
 
         pause(2);
         driver.quit();
+    }
+
+    //自动截图
+    public void takeScreenShot(){
+        //获取当前时间
+        long l = System.currentTimeMillis();
+        //获取当前路径
+        String property = System.getProperty("user.dir");
+        //以时间命名图片
+        String path = String.valueOf(l);
+        path=path+".png";
+        //图片路径
+        String screenPath=property+"/"+path;
+        //截图
+        File screenshotAs = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(screenshotAs, new File(screenPath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
