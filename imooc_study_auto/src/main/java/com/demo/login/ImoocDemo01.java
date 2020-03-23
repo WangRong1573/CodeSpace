@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -69,15 +72,13 @@ public class ImoocDemo01 {
         }
     }
 
-    public void loginScript(){
+    public void loginScript(String username,String userpass){
         this.initDriver();
 
 //        //用户名
-        String username="18272691567";
 //        String userBy="name";
 //        String userElement="email";
 //        //密码
-        String userpass="yucheng2017";
 //        String passBy="name";
 //        String passElement="password";
 //        //登录按钮
@@ -89,7 +90,6 @@ public class ImoocDemo01 {
 //        //text
 //        String textBy="cssSelector";
 //        String textElemnt=".text-ellipsis";
-
 
         element(getBy("userdata")).sendKeys(username);
         element(getBy("password")).sendKeys(userpass);
@@ -111,10 +111,18 @@ public class ImoocDemo01 {
 
     public static void main(String[] args) {
         ImoocDemo01 imoocDemo01 = new ImoocDemo01();
-        imoocDemo01.loginScript();
+//        imoocDemo01.loginScript();
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("18272691567","yucheng2017");
+        hashMap.put("18513199586","111111");
+        Iterator<Map.Entry<String, String>> iterator = hashMap.entrySet().iterator();
+        while (iterator.hasNext()){
+            Map.Entry<String, String> next = iterator.next();
+            String username = next.getKey().toString();
+            String password = next.getValue().toString();
+            System.out.println(username+"密码是："+password);
+            imoocDemo01.loginScript(username,password);
+        }
     }
-
-
-
-
 }
