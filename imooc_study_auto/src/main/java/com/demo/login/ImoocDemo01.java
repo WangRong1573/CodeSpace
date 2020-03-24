@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Listeners;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,12 +20,9 @@ import java.util.concurrent.TimeUnit;
  * @Author rong.wang
  * @Date 2020/3/22
  **/
-
-public class ImoocDemo01 {
-    WebDriver driver;
+@Listeners(TestListenerScreenShot.class)
+public class ImoocDemo01 extends  BaseDriver{
     public void initDriver(){
-        System.setProperty("webdriver.chrome.driver","chromedriver.exe");
-        driver=new ChromeDriver();
         driver.get("https://www.imooc.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -102,7 +100,8 @@ public class ImoocDemo01 {
         System.out.println(text);
         if (text.equals("慕仰2316096")){
             System.out.println("登录成功");
-            this.takeScreenShot();        }else {
+//            this.takeScreenShot();
+            }else {
             System.out.println("请检查登录信息是否正确");
         }
 
@@ -110,25 +109,6 @@ public class ImoocDemo01 {
         driver.quit();
     }
 
-    //自动截图
-    public void takeScreenShot(){
-        //获取当前时间
-        long l = System.currentTimeMillis();
-        //获取当前路径
-        String property = System.getProperty("user.dir");
-        //以时间命名图片
-        String path = String.valueOf(l);
-        path=path+".png";
-        //图片路径
-        String screenPath=property+"/"+path;
-        //截图
-        File screenshotAs = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(screenshotAs, new File(screenPath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void main(String[] args) {
         ImoocDemo01 imoocDemo01 = new ImoocDemo01();
@@ -142,7 +122,7 @@ public class ImoocDemo01 {
             Map.Entry<String, String> next = iterator.next();
             String username = next.getKey().toString();
             String password = next.getValue().toString();
-            System.out.println(username+"密码是："+password);
+//            System.out.println(username+"密码是："+password);
             imoocDemo01.loginScript(username,password);
         }
     }
