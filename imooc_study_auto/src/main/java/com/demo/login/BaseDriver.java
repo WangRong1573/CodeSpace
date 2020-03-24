@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * tip：好好学习，天天向上！坚持
@@ -23,10 +24,13 @@ public class BaseDriver {
     public BaseDriver() {
         System.setProperty("webdriver.chrome.driver","chromedriver.exe");
         driver=new ChromeDriver();
+        driver.get("https://www.imooc.com/");
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     //自动截图
-    public void takeScreenShot(){
+    public void screenShot(){
         //获取当前时间
         long l = System.currentTimeMillis();
         //获取当前路径

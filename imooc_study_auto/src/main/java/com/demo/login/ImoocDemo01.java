@@ -1,13 +1,10 @@
 package com.demo.login;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -23,9 +20,6 @@ import java.util.concurrent.TimeUnit;
 @Listeners(TestListenerScreenShot.class)
 public class ImoocDemo01 extends  BaseDriver{
     public void initDriver(){
-        driver.get("https://www.imooc.com/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(By.cssSelector("a#js-signin-btn")).click();
     }
 
@@ -110,20 +104,25 @@ public class ImoocDemo01 extends  BaseDriver{
     }
 
 
-    public static void main(String[] args) {
-        ImoocDemo01 imoocDemo01 = new ImoocDemo01();
-//        imoocDemo01.loginScript();
+//    public static void main(String[] args) {
+//        ImoocDemo01 imoocDemo01 = new ImoocDemo01();
+////        imoocDemo01.loginScript();
+//
+//        HashMap<String, String> hashMap = new HashMap<>();
+//        hashMap.put("18272691567","yucheng201");
+////        hashMap.put("18513199586","111111");
+//        Iterator<Map.Entry<String, String>> iterator = hashMap.entrySet().iterator();
+//        while (iterator.hasNext()){
+//            Map.Entry<String, String> next = iterator.next();
+//            String username = next.getKey().toString();
+//            String password = next.getValue().toString();
+////            System.out.println(username+"密码是："+password);
+//            imoocDemo01.loginScript(username,password);
+//        }
+//    }
 
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("18272691567","yucheng2017");
-        hashMap.put("18513199586","111111");
-        Iterator<Map.Entry<String, String>> iterator = hashMap.entrySet().iterator();
-        while (iterator.hasNext()){
-            Map.Entry<String, String> next = iterator.next();
-            String username = next.getKey().toString();
-            String password = next.getValue().toString();
-//            System.out.println(username+"密码是："+password);
-            imoocDemo01.loginScript(username,password);
-        }
+    @Test
+    public void login(){
+        this.loginScript("18272691567","yucheng2017");
     }
 }

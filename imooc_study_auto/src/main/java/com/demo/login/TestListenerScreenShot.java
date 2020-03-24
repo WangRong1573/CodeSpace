@@ -16,6 +16,7 @@ public class TestListenerScreenShot extends TestListenerAdapter {
     @Override
     public void onTestSuccess(ITestResult tr) {
         super.onTestSuccess(tr);
+        takeScreenShot(tr);
     }
 
     @Override
@@ -26,7 +27,7 @@ public class TestListenerScreenShot extends TestListenerAdapter {
 
     public void takeScreenShot(ITestResult tr){
         BaseDriver baseDriver= (BaseDriver) tr.getInstance();
-        baseDriver.takeScreenShot();
+        baseDriver.screenShot();
     }
     @Override
     public void onTestSkipped(ITestResult tr) {
