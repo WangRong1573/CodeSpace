@@ -23,7 +23,6 @@ public class Operate extends Handle {
         moveToElement("头像");
         String userText = getText("用户信息");
         Assert.assertEquals(userText,excepted);
-        pause(2);
     }
 
     //选择商品，点击立即购买，点击提交订单到支付中心
@@ -36,5 +35,16 @@ public class Operate extends Handle {
         Assert.assertEquals(detailPrice,sureOrderPrice);
         pause(2);
         quit();
+    }
+
+    //商品添加购物车
+    public void addShoppingCar(){
+        driver.get("https://coding.imooc.com/class/432.html");
+        String shoppingCarText = getText("课程信息--购物车case");
+        click("加购物车");
+        moveToElement("购物车img");
+        String iconText = getText("数量icon");
+        String inCarText = getText("购物车内课程信息");
+        Assert.assertEquals(shoppingCarText,inCarText);
     }
 }

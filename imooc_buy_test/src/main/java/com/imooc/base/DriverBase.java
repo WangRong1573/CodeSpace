@@ -50,15 +50,15 @@ public class DriverBase {
 
     //打开慕课网实战课程页面
     public void open() {
-        logger.info("打开实战课程页面");
         init();
         driver.get("https://coding.imooc.com/");
+        logger.info("打开实战课程页面");
     }
 
     //退出
     public void quit() {
-        logger.info("退出浏览器");
         driver.quit();
+        logger.info("退出浏览器");
     }
 
     //等待

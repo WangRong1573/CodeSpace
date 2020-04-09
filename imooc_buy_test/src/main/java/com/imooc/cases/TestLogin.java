@@ -1,8 +1,9 @@
 package com.imooc.cases;
 
+
+import com.imooc.base.DriverBase;
 import com.imooc.business.Operate;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 /**
  * tip：好好学习，天天向上！坚持
@@ -12,11 +13,11 @@ import org.testng.annotations.Test;
  * @Date 2020/3/31
  **/
 
-public class TestLogin {
+public class TestLogin extends DriverBase {
 
     @Test
-    @Parameters({"username","password"})
-    public  void testLogin(String username, String password){
-        new Operate().login(username,password,"weixin_且随疾风前行_0");
+    @Parameters({"username", "password"})
+    public void testLogin(String username, String password) {
+        new Operate().login(username, password, "weixin_且随疾风前行_0");
     }
 }
