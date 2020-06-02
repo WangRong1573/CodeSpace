@@ -19,6 +19,9 @@ public class DiGuiTest {
 
         int sum1 = DiGui.sum(100);
         System.out.println(sum1);
+
+        int res = method.res(5);
+        System.out.println(res);
     }
 
     public static int sum(int n){
@@ -39,5 +42,15 @@ class DiGui{
         }
         //程序执行到此说明n不是1
         return n+sum(n-1);
+    }
+}
+
+class method{
+    public static int res(int n){
+        int result=1;
+        for (int i = 1; i <=n ; i++) {
+            result=result*i;
+        }
+        return result;
     }
 }
