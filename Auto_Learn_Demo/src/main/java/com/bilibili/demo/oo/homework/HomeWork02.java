@@ -4,6 +4,11 @@ package com.bilibili.demo.oo.homework;
  * tip：好好学习，天天向上！坚持
  *
  * @Description:面向对象学习，学习使用内存图方式了解程序运行,简单封装
+ * 2.this在什么情况下不能省略：当局部变量的名称和实例变量的名称设置一致时，this不可省略，因为java的就近原则
+ *       //错误
+ *      //    public void setName(String name) {
+ *      //        name = name;
+ *      //    }
  * @Author rong.wang
  * @Date 2020/6/8
  **/
@@ -44,6 +49,10 @@ class Book{
     public void setName(String name) {
         this.name = name;
     }
+
+//    public void setName(String name) {
+//        name = name;
+//    }
 
     public int getPageNum() {
         return pageNum;
