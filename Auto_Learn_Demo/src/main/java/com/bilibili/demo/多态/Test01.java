@@ -65,7 +65,37 @@ public class Test01 {
          * Cat c1 = (Cat) new Animal();
          */
 
+        /**
+         * 向下转型的风险
+         * 出现类型转换异常，需要使用instanceof运算符来判断引用是否是某类型
+         *java.lang.ClassCastException 类型转换异常
+         *
+         * 运行时报错：
+         *      编译器检测到a6是Animal类型，Animal和Cat存在继承关系，所以编译通过
+         *      运行阶段，堆内存中创建的对象是Bird类型对象，在实际运行过程中将Bird类型强制转换成Cat类型对象
+         *      运行报错，因为Bird和Cat不存在继承关系
+         */
+//
+//        Animal a6=new Bird();
+//        Cat x = (Cat) a6;
+//        x.catchMouse();
 
+        /**
+         * 怎么避免类型转换异常
+         *
+         * 使用运算符 instanceof
+         *      1.在运行阶段动态判断引用指向的对象的类型
+         *      2.语法： 引用 instanceof 类型
+         *      3.运算返回的结果是Boolean类型：true/false
+         *      4.true则表示引用指向的java对象是这个类型
+         */
+
+        //任何时候对类型进行向下转型时，都要使用instanceof 进行判断，java规范要求的
+        Animal a6=new Bird();
+        if (a6 instanceof Cat){
+            Cat x = (Cat) a6;
+            x.catchMouse();
+        }
 
     }
 }
