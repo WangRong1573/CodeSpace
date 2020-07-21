@@ -11,6 +11,20 @@ package com.bilibili.demo.array;
  * @Author rong.wang
  * @Date 2020/7/21
  **/
-
+    /** @param      src      the source array.源
+    * @param      srcPos   starting position in the source array.源的起点
+    * @param      dest     the destination array.目标
+    * @param      destPos  starting position in the destination data.目标起点
+    * @param      length   the number of array elements to be copied.长度
+    * */
 public class ArrayTest02 {
+    public static void main(String[] args) {
+        int[] a={1,11,22,3,4};
+        int[] dest = new int[20];
+        //容易出现数组下标越界异常
+        System.arraycopy(a,1,dest,3,2);
+        for (int i = 0; i <dest.length ; i++) {
+            System.out.println(dest[i]);
+        }
+    }
 }
