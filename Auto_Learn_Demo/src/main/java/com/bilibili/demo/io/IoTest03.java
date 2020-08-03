@@ -20,13 +20,19 @@ public class IoTest03 {
             //准备一个byte数组
             byte[] bytes = new byte[4];
             //向byte数组中读数据
-            while (true){
+            /*while (true){
                 int readCount = fis.read(bytes);
                 //如果返回-1说明文件内容为空
                 if (readCount == -1){
                     break;
                 }
                 //执行到此处说明读到了
+                System.out.print(new String(bytes,0,readCount));
+            }*/
+
+            //更高级写法
+            int readCount = 0;
+            while ((readCount = fis.read(bytes)) != -1){
                 System.out.print(new String(bytes,0,readCount));
             }
         } catch (FileNotFoundException e) {
