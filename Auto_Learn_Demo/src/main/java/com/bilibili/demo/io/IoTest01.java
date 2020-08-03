@@ -31,7 +31,7 @@ public class IoTest01 {
         try {
             fis = new FileInputStream("E:\\test.txt");
 //            int data = fis.read();
-            //循环读取
+            //循环读取,一次读取一个字节，效率较低
             while (true){
                 int data = fis.read();
                 if (data == -1){
