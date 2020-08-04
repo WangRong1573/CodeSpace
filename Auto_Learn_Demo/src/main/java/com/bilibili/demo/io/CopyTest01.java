@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class CopyTest01 {
     public static void main(String[] args) {
+
         FileInputStream fis = null;
         FileOutputStream fos = null;
 
