@@ -34,6 +34,9 @@ public class CopyTest01 {
             while ((count = fis.read(bytes)) != -1){
                 fos.write(bytes,0,count);
             }
+
+            //刷新
+            fos.flush();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
