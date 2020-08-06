@@ -10,7 +10,9 @@ package com.bilibili.demo.thread;
 
 public class ThreadTest02 {
     public static void main(String[] args) {
+        //创建一个可运行的对象
         MyRunnable runnable = new MyRunnable();
+        //将可运行对象封装成一个线程对象
         Thread thread = new Thread(runnable);
         thread.start();
 
