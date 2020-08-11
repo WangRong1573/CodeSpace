@@ -19,6 +19,7 @@ public class TimerTest {
     public static void main(String[] args) throws ParseException {
         Test t = new Test();
         Timer timer = new Timer();
+        //Timer timer = new Timer(); 守护线程的方式
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date firstTime = dateFormat.parse("2020-08-11 21:25:00");
