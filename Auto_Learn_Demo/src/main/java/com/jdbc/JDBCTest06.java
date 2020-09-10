@@ -16,6 +16,13 @@ import java.util.Scanner;
  * 不合法：登录失败
  * 2.数据的准备：
  * 在实际开发中，表的设计会使用专业的建模工具，例如powerDesigner,使用数据库t_user表
+ *
+ * 当前程序存在问题：sql注入
+ *      比如：用户名输入：ssss
+ *            密码输入：aaa 'or' 1'='1
+ * 导致sql注入的根本原因？
+ *      用户输入的信息中包含sql语句中的关键字，并且这些关键字参与了sql语句的编译过程
+ *      导致sql语句的原意被扭曲，进而达到sql注入
  * @Author rong.wang
  * @Date 2020/9/10
  **/
