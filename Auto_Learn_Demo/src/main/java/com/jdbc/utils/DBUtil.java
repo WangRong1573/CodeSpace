@@ -35,7 +35,7 @@ public class DBUtil {
      * @return 连接对象
      * @throws SQLException
      */
-    public Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/student_info?serverTimezone=GMT%2B8", "root", "localhost");
     }
 
@@ -45,7 +45,7 @@ public class DBUtil {
      * @param ps    数据库操作对象
      * @param rs    处理结果集
      */
-    public void close(Connection conn, Statement ps, ResultSet rs){
+    public static void close(Connection conn, Statement ps, ResultSet rs){
         if (rs != null){
             try {
                 rs.close();
