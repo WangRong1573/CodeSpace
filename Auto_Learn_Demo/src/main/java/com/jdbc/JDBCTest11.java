@@ -59,10 +59,12 @@ public class JDBCTest11 {
             e.printStackTrace();
         } catch (SQLException e) {
             //为了保证数据的安全性，遇到异常不修改数据，回滚
-            try {
-                conn.rollback();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
+            if (conn != null){
+                try {
+                    conn.rollback();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
             e.printStackTrace();
         }finally {
