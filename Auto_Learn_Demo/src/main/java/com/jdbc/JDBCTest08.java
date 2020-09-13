@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * tip：好好学习，天天向上！坚持
  *
- * @Description: 模拟用户登录，复习JDBC写法
+ * @Description: 模拟用户登录，复习JDBC写法，占位符版本
  * @Author rong.wang
  * @Date 2020/9/13
  **/
