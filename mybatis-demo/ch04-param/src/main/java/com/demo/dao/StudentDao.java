@@ -4,6 +4,7 @@ import com.demo.entity.Student;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface StudentDao {
 
@@ -15,4 +16,6 @@ public interface StudentDao {
     List<Student> selectMultiObject(Student student);
 
     List<Student> selectMultiPosition(String name,Integer age);
+
+    List<Student> selectMultiByMap(Map<String,Object> map);
 }

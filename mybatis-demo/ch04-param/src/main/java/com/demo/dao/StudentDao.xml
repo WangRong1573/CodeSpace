@@ -19,4 +19,9 @@
     <select id="selectMultiPosition" resultType="com.demo.entity.Student">
          select id,name,email,age from student where name=#{arg0} or age = #{arg1}
     </select>
+
+<!--    使用map传值，#{map的key}-->
+    <select id="selectMultiByMap" resultType="com.demo.entity.Student">
+        select id,name,email,age from student where name=#{name} or age = #{age}
+    </select>
 </mapper>
