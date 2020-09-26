@@ -9,4 +9,9 @@
     <select id="selectMultiParam" resultType="com.demo.entity.Student">
         select id,name,email,age from student where name = #{myname} or age = #{myage}
     </select>
+
+<!--    使用对象传参-->
+    <select id="selectMultiObject" resultType="com.demo.entity.Student">
+        select id,name,email,age from student where name = #{name} or age = #{age}
+    </select>
 </mapper>

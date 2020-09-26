@@ -11,4 +11,6 @@ public interface StudentDao {
 
     List<Student> selectMultiParam(@Param("myname") String name,
                                    @Param("myage") Integer age);
+
+    List<Student> selectMultiObject(Student student);
 }
