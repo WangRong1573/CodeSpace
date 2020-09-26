@@ -13,4 +13,6 @@ public interface StudentDao {
                                    @Param("myage") Integer age);
 
     List<Student> selectMultiObject(Student student);
+
+    List<Student> selectMultiPosition(String name,Integer age);
 }

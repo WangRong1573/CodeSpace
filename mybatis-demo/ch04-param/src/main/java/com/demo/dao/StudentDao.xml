@@ -14,4 +14,9 @@
     <select id="selectMultiObject" resultType="com.demo.entity.Student">
         select id,name,email,age from student where name = #{name} or age = #{age}
     </select>
+
+<!--    按参数位置传参（了解）-->
+    <select id="selectMultiPosition" resultType="com.demo.entity.Student">
+         select id,name,email,age from student where name=#{arg0} or age = #{arg1}
+    </select>
 </mapper>
