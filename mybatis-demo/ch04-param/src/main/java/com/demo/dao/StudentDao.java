@@ -1,5 +1,6 @@
 package com.demo.dao;
 
+import com.demo.entity.MyStudent;
 import com.demo.entity.Student;
 import com.demo.entity.ViewStudent;
 import com.demo.vo.QueryStudent;
@@ -37,4 +38,7 @@ public interface StudentDao {
      * @return
      */
     List<Student> selectAllStudent();
+
+
+    List<MyStudent> selectMyStudent();
 }

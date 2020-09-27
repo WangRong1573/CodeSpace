@@ -65,4 +65,16 @@
     <select id="selectAllStudent" resultMap="stuMap">
         select id,name from student
     </select>
+
+<!--    数据库列名与java对象的属性名不一致时-->
+    <resultMap id="myMap" type="com.demo.entity.MyStudent">
+        <id column="id" property="myId"></id>
+        <result column="name" property="myName"></result>
+        <result column="email" property="myEmail"></result>
+        <result column="age" property="myAge"></result>
+    </resultMap>
+
+    <select id="selectMyStudent" resultMap="myMap">
+        select id,name,email,age from student
+    </select>
 </mapper>
