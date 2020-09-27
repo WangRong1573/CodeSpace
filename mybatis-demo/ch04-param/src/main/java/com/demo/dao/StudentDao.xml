@@ -29,4 +29,9 @@
     <select id="selectCountOfStudent" resultType="java.lang.Integer">
         select count(*) from student
     </select>
+
+<!--    自定义别名-->
+    <select id="selectViewStudentById" resultType="stu">
+        select id,name from student where id = #{id}
+    </select>
 </mapper>
