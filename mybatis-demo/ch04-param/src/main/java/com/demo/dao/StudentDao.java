@@ -18,4 +18,6 @@ public interface StudentDao {
     List<Student> selectMultiPosition(String name,Integer age);
 
     List<Student> selectMultiByMap(Map<String,Object> map);
+
+    int selectCountOfStudent();
 }

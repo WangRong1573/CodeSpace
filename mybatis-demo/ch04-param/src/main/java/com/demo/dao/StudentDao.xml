@@ -24,4 +24,9 @@
     <select id="selectMultiByMap" resultType="com.demo.entity.Student">
         select id,name,email,age from student where name=#{name} or age = #{age}
     </select>
+
+<!--    resultType简单类型-->
+    <select id="selectCountOfStudent" resultType="java.lang.Integer">
+        select count(*) from student
+    </select>
 </mapper>
