@@ -26,4 +26,6 @@ public interface StudentDao {
     List<ViewStudent> selectViewStudentById(Integer id);
 
     List<QueryStudent> queryStudent(Integer id);
+
+    Map<Object,Object> selectMapById(Integer id);
 }

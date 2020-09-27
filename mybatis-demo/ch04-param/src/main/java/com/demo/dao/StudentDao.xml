@@ -39,4 +39,11 @@
     <select id="queryStudent" resultType="QueryStudent">
         select id,name from student where id = #{id}
     </select>
+
+<!--    返回map
+    返回类型是map，列名是map的key，列值是map的value
+-->
+    <select id="selectMapById" resultType="java.util.HashMap">
+        select id,name from student where id = #{id}
+    </select>
 </mapper>
