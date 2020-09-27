@@ -84,4 +84,9 @@
     <select id="selectMyStudent2" resultType="com.demo.entity.MyStudent">
         select id as myId,name as myName,email as myEmail,age as myAge from student
     </select>
+
+<!--    模糊查询，在java代码中指定like的内容-->
+    <select id="selectLikeOne" resultType="com.demo.entity.Student">
+        select id,name,email from student where name like #{name}
+    </select>
 </mapper>

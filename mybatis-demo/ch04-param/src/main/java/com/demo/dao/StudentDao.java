@@ -7,6 +7,7 @@ import com.demo.vo.QueryStudent;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.LongSummaryStatistics;
 import java.util.Map;
 
 public interface StudentDao {
@@ -43,4 +44,11 @@ public interface StudentDao {
     List<MyStudent> selectMyStudent();
 
     List<MyStudent> selectMyStudent2();
+
+    /**
+     * 模糊查询，第一种方式，在java代码中指定like的内容
+     * @param name
+     * @return
+     */
+    List<Student> selectLikeOne(String name);
 }
