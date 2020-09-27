@@ -8,12 +8,20 @@
         <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
 
-<!--    定义自定义类型的别名
-    type:想要自定义别名的类的全限定名称
-    alias：自定义的别名
+<!--&lt;!&ndash;    定义自定义类型的别名-->
+<!--    type:想要自定义别名的类的全限定名称-->
+<!--    alias：自定义的别名-->
+<!--&ndash;&gt;-->
+<!--    <typeAliases>-->
+<!--        <typeAlias type="com.demo.entity.ViewStudent" alias="stu"></typeAlias>-->
+<!--    </typeAliases>-->
+
+<!--    定义别名的第二种方式：
+        <package>: name是包名，表示这个包中的所有类，类名就是别名（不区分大小写）
 -->
     <typeAliases>
-        <typeAlias type="com.demo.entity.ViewStudent" alias="stu"></typeAlias>
+        <package name="com.demo.vo"/>
+<!--        <package name="com.demo.entity"/>-->
     </typeAliases>
     <environments default="mydev">
         <environment id="mydev">

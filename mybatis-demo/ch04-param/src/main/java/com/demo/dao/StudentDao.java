@@ -2,6 +2,7 @@ package com.demo.dao;
 
 import com.demo.entity.Student;
 import com.demo.entity.ViewStudent;
+import com.demo.vo.QueryStudent;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface StudentDao {
     int selectCountOfStudent();
 
     List<ViewStudent> selectViewStudentById(Integer id);
+
+    List<QueryStudent> queryStudent(Integer id);
 }

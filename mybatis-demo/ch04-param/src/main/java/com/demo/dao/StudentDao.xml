@@ -31,7 +31,12 @@
     </select>
 
 <!--    自定义别名-->
-    <select id="selectViewStudentById" resultType="stu">
+    <select id="selectViewStudentById" resultType="com.demo.entity.ViewStudent">
+        select id,name from student where id = #{id}
+    </select>
+
+<!--    自定义别名第二种方式-->
+    <select id="queryStudent" resultType="QueryStudent">
         select id,name from student where id = #{id}
     </select>
 </mapper>
