@@ -41,4 +41,6 @@ public interface StudentDao {
 
 
     List<MyStudent> selectMyStudent();
+
+    List<MyStudent> selectMyStudent2();
 }

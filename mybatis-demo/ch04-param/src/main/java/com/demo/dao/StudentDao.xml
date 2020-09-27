@@ -77,4 +77,11 @@
     <select id="selectMyStudent" resultMap="myMap">
         select id,name,email,age from student
     </select>
+
+<!--    数据库列名与java对象的属性名不一致时，第二种方案：使用列别名
+        resultType使用原则是：类名与java对象的属性名相同
+-->
+    <select id="selectMyStudent2" resultType="com.demo.entity.MyStudent">
+        select id as myId,name as myName,email as myEmail,age as myAge from student
+    </select>
 </mapper>
