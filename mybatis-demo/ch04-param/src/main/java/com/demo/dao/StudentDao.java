@@ -51,4 +51,6 @@ public interface StudentDao {
      * @return
      */
     List<Student> selectLikeOne(String name);
+
+    List<Student> selectLikeTwo(String name);
 }

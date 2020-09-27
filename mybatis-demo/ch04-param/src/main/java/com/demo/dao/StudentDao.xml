@@ -89,4 +89,9 @@
     <select id="selectLikeOne" resultType="com.demo.entity.Student">
         select id,name,email from student where name like #{name}
     </select>
+
+<!--    模糊查询第二种方式，在mapper文件中使用字符串拼接的方式-->
+    <select id="selectLikeTwo" resultType="com.demo.entity.Student">
+        select id,name,email,age from student where name like "%" #{name} "%"
+    </select>
 </mapper>
