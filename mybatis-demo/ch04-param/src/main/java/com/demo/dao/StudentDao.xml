@@ -46,4 +46,23 @@
     <select id="selectMapById" resultType="java.util.HashMap">
         select id,name from student where id = #{id}
     </select>
+
+<!--    使用resultMap
+        1.先定义resultMap
+        2.在select标签，使用resultMap来引用定义的resultMap
+-->
+<!--    定义resultMap
+        1.id：自定义名称，表示定义的resultMap
+        2.type：java类型的全限定名称
+-->
+    <resultMap id="stuMap" type="com.demo.entity.Student">
+<!--    column表示列名，property表示java类型的属性名    主键列,使用id标签；非主键列，使用result标签-->
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="email" property="email"></result>
+        <result column="age" property="age"></result>
+    </resultMap>
+    <select id="selectAllStudent" resultMap="stuMap">
+        select id,name from student
+    </select>
 </mapper>

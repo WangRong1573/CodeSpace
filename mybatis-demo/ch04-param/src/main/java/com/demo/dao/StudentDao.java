@@ -28,4 +28,13 @@ public interface StudentDao {
     List<QueryStudent> queryStudent(Integer id);
 
     Map<Object,Object> selectMapById(Integer id);
+
+    /**
+     * 使用resultMap
+     *      结果映射：指定列名和java对象的属性映射关系
+     *      1）自定义列值赋值给哪个属性
+     *      2）当列名和对象的属性名称不一致时，一定要使用resultMap来指定映射关系
+     * @return
+     */
+    List<Student> selectAllStudent();
 }
