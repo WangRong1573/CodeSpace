@@ -12,4 +12,14 @@
         <servlet-name>one</servlet-name>
         <url-pattern>/one</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>two</servlet-name>
+        <servlet-class>com.bj.controller.TwoServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>two</servlet-name>
+        <url-pattern>/two</url-pattern>
+    </servlet-mapping>
 </web-app>
