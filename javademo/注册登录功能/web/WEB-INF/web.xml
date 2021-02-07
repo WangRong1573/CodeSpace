@@ -16,7 +16,17 @@
         <servlet-name>show</servlet-name>
         <servlet-class>com.bj.controller.ShowUsersServlet</servlet-class>
     </servlet>
-    
+
+    <servlet>
+        <servlet-name>UserDeleteServlet</servlet-name>
+        <servlet-class>com.bj.controller.UserDeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserDeleteServlet</servlet-name>
+        <url-pattern>/user/delete</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>show</servlet-name>
         <url-pattern>/user/show</url-pattern>

@@ -35,6 +35,7 @@ public class ShowUsersServlet extends HttpServlet {
         out.print("<td>用户密码：</td>");
         out.print("<td>用户性别：</td>");
         out.print("<td>用户邮箱：</td>");
+        out.print("<td>操作</td>");
         out.print("</tr>");
         for (Users u:users){
             out.print("<tr>");
@@ -43,6 +44,7 @@ public class ShowUsersServlet extends HttpServlet {
             out.print("<td>"+u.getPassword()+"</td>");
             out.print("<td>"+u.getSex()+"</td>");
             out.print("<td>"+u.getEmail()+"</td>");
+            out.print("<td><a href='/App/user/delete?userId="+u.getUserId()+"'>删除</a></td>");
             out.print("</tr>");
         }
 
