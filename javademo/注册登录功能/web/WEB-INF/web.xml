@@ -39,4 +39,11 @@
         <servlet-name>show</servlet-name>
         <url-pattern>/user/show</url-pattern>
     </servlet-mapping>
+
+<!--    设置访问网站时的默认页面：欢迎页-->
+    <welcome-file-list>
+<!--        Servlet资源文件作为默认欢迎资源时，写别名路径，但是需要将开头的“/”去掉-->
+<!--        <welcome-file>user/show</welcome-file>-->
+        <welcome-file>login.html</welcome-file>
+    </welcome-file-list>
 </web-app>
