@@ -11,4 +11,14 @@
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/user/add</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>show</servlet-name>
+        <servlet-class>com.bj.controller.ShowUsersServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>show</servlet-name>
+        <url-pattern>/user/show</url-pattern>
+    </servlet-mapping>
 </web-app>
