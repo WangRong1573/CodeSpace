@@ -85,4 +85,25 @@ public class UsersDao {
         }
         return list;
     }
+
+    public int login(String userName, String password) {
+        int result = 0;
+        String sql = "select count(*) from users where userName=? and password=?";
+
+        try {
+            ps = util.creatPre(sql);
+            ps.setString(1,userName);
+            ps.setString(2,password);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                result = rs.getInt("count(*)");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            util.close(rs);
+        }
+        return result;
+    }
 }

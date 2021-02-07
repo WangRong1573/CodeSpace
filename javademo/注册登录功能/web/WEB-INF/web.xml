@@ -21,6 +21,14 @@
         <servlet-name>UserDeleteServlet</servlet-name>
         <servlet-class>com.bj.controller.UserDeleteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <servlet-class>com.bj.controller.UserLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>UserDeleteServlet</servlet-name>
