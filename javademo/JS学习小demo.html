@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        //功能1：全选/全不选
+        function selectAll() {
+            let flag = document.getElementById("selectAll").checked;
+            let list = document.getElementsByName("group");
+            for (let i = 0; i <list.length; i++) {
+                let element = list[i];
+                element.checked = flag;
+            }
+
+        }
+        //功能2：当列表取消并非全部选中时，全选框状态变为未选中；当列表分别选中时，全选框变为选中
+        //分析：当列表选中个数与列表复选框数相同时，则为全部选中
+        function selectOne() {
+            let elements = document.getElementsByName("group");
+            //记录选中个数
+            let num = 0;
+            for (let i = 0; i < elements.length; i++) {
+                let element = elements[i];
+                if (element.checked === true){
+                    num += 1;
+                }
+            }
+            //如果选中个数和数组长度相同，则全部选中
+            if (num === elements.length){
+                document.getElementById("selectAll").checked = true;
+            }else {
+                document.getElementById("selectAll").checked = false;
+            }
+        }
+        function mouseover() {
+            this.style.backgroundColor = "red";
+        }
+        function mouseout() {
+            this.style.backgroundColor = "white";
+        }
+        function main() {
+            document.getElementById("selectAll").onclick = selectAll;
+            //将函数与列表中每个复选框绑定点击事件
+            let elements = document.getElementsByName("group");
+            for (let i = 0; i < elements.length; i++) {
+                let element = elements[i];
+                element.onclick = selectOne;
+            }
+            //将函数与列表中tr属性绑定onmouseover和onmouseout事件
+            let elementsByTagName = document.getElementsByTagName("tr");
+            // i从1开始是去除第一行表头效果
+            for (let i = 1; i < elementsByTagName.length; i++) {
+                let elementsByTagNameElement = elementsByTagName[i];
+                elementsByTagNameElement.onmouseover = mouseover;
+                elementsByTagNameElement.onmouseout = mouseout;
+            }
+        }
+    </script>
+</head>
+<body onload="main()">
+<table border="1" cellspacing="0">
+    <tr>
+        <td><input type="checkbox" id="selectAll">全选/全不选</td>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>家庭住址</td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" name="group"></td>
+        <td>mike</td>
+        <td>18</td>
+        <td>河南省商丘市韶钢</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="group"></td>
+        <td>john</td>
+        <td>22</td>
+        <td>河南省商丘市虞城县</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="group"></td>
+        <td>tom</td>
+        <td>23</td>
+        <td>河南省商丘市杜集</td>
+    </tr>
+</table>
+
+</body>
+</html>
