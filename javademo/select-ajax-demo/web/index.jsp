@@ -24,11 +24,18 @@
                             $("#pro").empty();
                             $.each(resp, function (index, element) {
                                 $("#pro").append("<option value='" + element.id + "'>" + element.name + "</option>");
-                            })
+                            });
+                            var id = $("#pro>option:selected").val();
+                            $.post(
+                                "queryCity",
+                                {pid: id},
+                                callback,
+                                "json"
+                            )
                         }
                     }
                 )
-            };
+            }
 
             //给省份的select绑定change事件
             $("#pro").change(function () {
