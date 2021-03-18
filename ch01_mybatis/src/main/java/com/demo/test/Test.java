@@ -57,8 +57,12 @@ public class Test {
         //记得关闭
         session.close();*/
 
-        Student student = new Student(7, "cxk", 28);
+        /*Student student = new Student(7, "cxk", 28);
         session.update("test.updateOne",student);
+        session.commit();
+        session.close();*/
+
+        session.delete("test.delete",1);
         session.commit();
         session.close();
     }
