@@ -1,6 +1,9 @@
 package com.demo.test;
 
 import com.demo.domain.Student;
+import com.demo.service.StudentService;
+import com.demo.service.impl.StudentServiceImpl;
+import com.demo.util.ServiceFactory;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -19,7 +22,11 @@ import java.io.InputStream;
 
 public class Test {
     public static void main(String[] args) {
-
+        //此时应使用代理类
+        //StudentServiceImpl service = new StudentServiceImpl();
+        StudentService service = (StudentService) ServiceFactory.getService(new StudentServiceImpl());
+        Student student = new Student(null, "mike", 22);
+        service.save(student);
     }
 
 }

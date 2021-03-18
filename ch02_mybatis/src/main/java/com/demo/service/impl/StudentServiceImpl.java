@@ -18,11 +18,12 @@ public class StudentServiceImpl implements StudentService {
     private StudentDao studentDao = new StudentDaoImpl();
     @Override
     public Student getById(Integer id) {
-        return null;
+        Student s = studentDao.getById(id);
+        return s;
     }
 
     @Override
     public void save(Student s) {
-
+        studentDao.save(s);
     }
 }

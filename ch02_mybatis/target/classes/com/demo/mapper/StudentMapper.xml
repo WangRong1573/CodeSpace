@@ -7,25 +7,7 @@
     select * from t_student where id = #{id}
   </select>
 
-    <!--如果返回的是多条记录，resultType返回类型应该为集合的泛型-->
-    <select id="getAll" resultType="com.demo.domain.Student">
-        select * from t_student
-    </select>
-
-<!--    注意
-        所有标签都要有唯一 id 属性
-        <select> 标签 parameterType 可以不写，resultType必须写
-        <insert> <update><delete>只写 id 属性
--->
-    <insert id="addOne">
+    <insert id="save">
         insert into t_student(name,age) values (#{name},#{age})
     </insert>
-
-    <update id="updateOne">
-        update t_student set name = #{name},age=#{age} where id = #{id}
-    </update>
-
-    <delete id="delete">
-        delete from t_student where id = #{id}
-    </delete>
 </mapper>

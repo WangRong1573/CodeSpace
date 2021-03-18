@@ -11,7 +11,7 @@ package com.demo.util;
 public class ServiceFactory {
 
     //传递zs对象取得ls对象
-    public Object getService(Object service){
+    public static Object getService(Object service){
         return new TransactionInvocationHandler(service).getProxy();
     }
 }
