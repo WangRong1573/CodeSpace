@@ -35,12 +35,12 @@ public class Test {
         SqlSession session = sqlSessionFactory.openSession();
         //参数1：通过命名空间.id值方式定位sql语句
         //参数2：sql语句中传递的参数
-//        Student student = session.selectOne("testSelect.getOneById",1);
+//        Student student = session.selectOne("test.getOneById",1);
 //        System.out.println(student);
 
         /*
         //查询所有学生操作
-        List<Student> students = session.selectList("testSelect.getAll");
+        List<Student> students = session.selectList("test.getAll");
         for (Student student:students){
             System.out.println(student);
         }*/
@@ -50,11 +50,16 @@ public class Test {
         * mybatis默认手动提交事务
         *
         * */
-        Student student = new Student(null, "赵无极", 30);
-        session.insert("addOne",student);
+        /*Student student = new Student(null, "赵无极", 30);
+        session.insert("test.addOne",student);
         //提交事务
         session.commit();
         //记得关闭
+        session.close();*/
+
+        Student student = new Student(7, "cxk", 28);
+        session.update("test.updateOne",student);
+        session.commit();
         session.close();
     }
 
