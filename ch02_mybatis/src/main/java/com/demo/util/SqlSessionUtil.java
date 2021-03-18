@@ -42,7 +42,7 @@ public class SqlSessionUtil {
         return session;
     }
 
-    public void myClose(SqlSession sqlSession){
+    public static void myClose(SqlSession sqlSession){
         if (sqlSession != null) {
             sqlSession.close();
 
