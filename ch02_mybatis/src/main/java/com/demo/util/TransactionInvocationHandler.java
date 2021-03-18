@@ -46,6 +46,7 @@ public class TransactionInvocationHandler implements InvocationHandler {
     }
 
     public Object getProxy(){
+        //获取代理类对象
         return Proxy.newProxyInstance(target.getClass().getClassLoader(),target.getClass().getInterfaces(),this);
     }
 }
