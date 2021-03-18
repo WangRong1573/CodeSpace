@@ -11,4 +11,13 @@
     <select id="getAll" resultType="com.demo.domain.Student">
         select * from t_student
     </select>
+
+<!--    注意
+        所有标签都要有唯一 id 属性
+        <select> 标签 parameterType 可以不写，resultType必须写
+        <insert> <update><delete>只写 id 属性
+-->
+    <insert id="addOne">
+        insert into t_student(name,age) values (#{name},#{age})
+    </insert>
 </mapper>

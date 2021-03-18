@@ -38,11 +38,22 @@ public class Test {
 //        Student student = session.selectOne("testSelect.getOneById",1);
 //        System.out.println(student);
 
+        /*
         //查询所有学生操作
         List<Student> students = session.selectList("testSelect.getAll");
         for (Student student:students){
             System.out.println(student);
-        }
+        }*/
+
+
+        /*
+        * mybatis默认手动提交事务
+        *
+        * */
+        Student student = new Student(null, "赵无极", 30);
+        session.insert("addOne",student);
+        //提交事务
+        session.commit();
         //记得关闭
         session.close();
     }
