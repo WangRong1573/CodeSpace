@@ -8,4 +8,8 @@
     <insert id="insertStudent">
         insert into t_student(name,age) values (#{name},#{age});
     </insert>
+    
+    <select id="selectMultiParam" resultType="com.bjpowernode.domain.Student">
+        select * from t_student where name=#{name} or age = #{age};
+    </select>
 </mapper>
