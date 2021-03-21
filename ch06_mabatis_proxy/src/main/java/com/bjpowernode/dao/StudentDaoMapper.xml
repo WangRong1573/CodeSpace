@@ -12,4 +12,8 @@
     <select id="selectMultiParam" resultType="com.bjpowernode.domain.Student">
         select * from t_student where name=#{name} or age = #{age};
     </select>
+
+    <select id="selectMultiObject" resultType="com.bjpowernode.domain.Student">
+        select * from t_student where name=#{name} or age = #{age};
+    </select>
 </mapper>
