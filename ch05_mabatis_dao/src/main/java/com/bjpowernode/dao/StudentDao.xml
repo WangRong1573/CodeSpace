@@ -5,4 +5,8 @@
     <select id="selectStudents" resultType="com.bjpowernode.domain.Student">
         select * from t_student
     </select>
+
+    <insert id="insertStudent">
+        insert into t_student(name,age) values (#{name},#{age})
+    </insert>
 </mapper>
