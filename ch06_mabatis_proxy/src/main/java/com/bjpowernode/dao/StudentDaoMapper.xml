@@ -20,4 +20,17 @@
     <select id="selectMultiPosition" resultType="com.bjpowernode.domain.Student">
         select * from t_student where name = #{arg0} or age = #{arg1};
     </select>
+
+    <!--
+    # 和 $区别
+    1.#使用？在sql语句中做占位，使用PreparedStatement执行sql，效率高
+    2.#能够避免sql注入，更安全
+    3.$是使用字符串连接的方式，使用Statement执行sql，效率低
+    4.$存在sql注入风险，缺乏安全性
+    5.$用来替换表名或者列名
+
+    -->
+    <select id="selectUse$order" resultType="com.bjpowernode.domain.Student">
+        select * from t_student order by ${cloName};
+    </select>
 </mapper>

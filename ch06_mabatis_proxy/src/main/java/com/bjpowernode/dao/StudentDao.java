@@ -27,4 +27,7 @@ public interface StudentDao {
      * @return
      */
     List<Student> selectMultiPosition(String name,Integer age);
+
+
+    List<Student> selectUse$order(@Param("cloName") String name);
 }
