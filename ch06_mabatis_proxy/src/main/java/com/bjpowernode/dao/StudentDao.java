@@ -19,4 +19,12 @@ public interface StudentDao {
      * @return
      */
     List<Student> selectMultiObject(Student student);
+
+    /**
+     * 传参方式3：按照位置方式使用 #{arg0} #{arg1}
+     * @param name
+     * @param age
+     * @return
+     */
+    List<Student> selectMultiPosition(String name,Integer age);
 }
