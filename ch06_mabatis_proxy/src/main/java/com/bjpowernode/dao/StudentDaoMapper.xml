@@ -65,4 +65,16 @@
             or age >#{age}
         </if>
     </select>
+
+    <select id="selectWhere" resultType="com.bjpowernode.domain.Student">
+        select * from t_student
+        <where>
+            <if test="name != null and name != '' ">
+                and name = #{name}
+            </if>
+            <if test="age > 25">
+                or age >#{age}
+            </if>
+        </where>
+    </select>
 </mapper>
