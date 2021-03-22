@@ -37,4 +37,6 @@ public interface StudentDao {
     List<Student> selectLikeOne(String name);
 
     List<Student> selectLikeTwo(String name);
+
+    List<Student> selectIf(Student student);
 }

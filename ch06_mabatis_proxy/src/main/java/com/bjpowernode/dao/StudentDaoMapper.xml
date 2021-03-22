@@ -55,4 +55,14 @@
     <select id="selectLikeTwo" resultType="com.bjpowernode.domain.Student">
         select * from t_student where name like #{name} "%";
     </select>
+
+    <select id="selectIf" resultType="com.bjpowernode.domain.Student">
+        select * from t_student where 1=1
+        <if test="name != null and name != '' ">
+            and name = #{name}
+        </if>
+        <if test="age > 25">
+            or age >#{age}
+        </if>
+    </select>
 </mapper>
