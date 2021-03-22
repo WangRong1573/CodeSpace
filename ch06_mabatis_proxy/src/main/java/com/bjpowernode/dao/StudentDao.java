@@ -33,4 +33,8 @@ public interface StudentDao {
     List<Student> selectUse$order(@Param("cloName") String name);
 
     List<MyStudent> selectMyStudents();
+
+    List<Student> selectLikeOne(String name);
+
+    List<Student> selectLikeTwo(String name);
 }

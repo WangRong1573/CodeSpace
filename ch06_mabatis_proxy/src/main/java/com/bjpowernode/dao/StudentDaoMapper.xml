@@ -41,4 +41,18 @@
     <select id="selectMyStudents" resultType="com.bjpowernode.domain.MyStudent">
         select id as stuid,name as stuname,age as stuage from t_student;
     </select>
+
+    <!--
+    like语句的拼接
+    -->
+    <select id="selectLikeOne" resultType="com.bjpowernode.domain.Student">
+        select * from t_student where name like #{name};
+    </select>
+
+    <!--
+    like语句的第二种方式
+    -->
+    <select id="selectLikeTwo" resultType="com.bjpowernode.domain.Student">
+        select * from t_student where name like #{name} "%";
+    </select>
 </mapper>
