@@ -43,4 +43,6 @@ public interface StudentDao {
     List<Student> selectWhere(Student student);
 
     List<Student> selectForOne(List<Integer> idList);
+
+    List<Student> selectForTwo(List<Student> stuList);
 }

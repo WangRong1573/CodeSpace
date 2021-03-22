@@ -84,4 +84,11 @@
             #{stuId}
         </foreach>
     </select>
+    
+    <select id="selectForTwo" resultType="com.bjpowernode.domain.Student">
+        select * from t_student where id in 
+        <foreach collection="list" item="stu" open="(" close=")" separator=",">
+            #{stu.id}
+        </foreach>
+    </select>
 </mapper>
