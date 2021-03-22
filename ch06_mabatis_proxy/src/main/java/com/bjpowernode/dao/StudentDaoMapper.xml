@@ -33,4 +33,12 @@
     <select id="selectUse$order" resultType="com.bjpowernode.domain.Student">
         select * from t_student order by ${cloName};
     </select>
+
+    <!--
+    当实体类的属性名和数据库的列名不一致时的解决方案，推荐sql语句中字段名起别名
+    -->
+
+    <select id="selectMyStudents" resultType="com.bjpowernode.domain.MyStudent">
+        select id as stuid,name as stuname,age as stuage from t_student;
+    </select>
 </mapper>

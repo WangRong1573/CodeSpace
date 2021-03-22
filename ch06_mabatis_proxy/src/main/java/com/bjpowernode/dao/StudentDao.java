@@ -1,5 +1,6 @@
 package com.bjpowernode.dao;
 
+import com.bjpowernode.domain.MyStudent;
 import com.bjpowernode.domain.Student;
 import org.apache.ibatis.annotations.Param;
 
@@ -30,4 +31,6 @@ public interface StudentDao {
 
 
     List<Student> selectUse$order(@Param("cloName") String name);
+
+    List<MyStudent> selectMyStudents();
 }
