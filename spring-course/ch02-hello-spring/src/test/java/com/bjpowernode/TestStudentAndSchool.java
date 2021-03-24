@@ -1,6 +1,6 @@
 package com.bjpowernode;
 
-import com.bjpowernode.ba02.Student;
+import com.bjpowernode.ba03.Student;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,7 +16,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestStudentAndSchool {
     @Test
     public void test02(){
-        String config = "ba02/ApplicationContext.xml";
+        String config = "ba03/ApplicationContext.xml";
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
         Student student = (Student) ac.getBean("student");
         System.out.println(student);
