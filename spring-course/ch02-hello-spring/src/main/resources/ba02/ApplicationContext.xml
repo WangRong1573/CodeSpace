@@ -10,12 +10,12 @@
     </bean>
     <!--
    引用数据类型注入
-   使用<constructor-arg>标签
+   使用<property name="属性名称" ref="bean对象的id的值"/>
 
    -->
     <bean class="com.bjpowernode.ba02.Student" id="student">
-        <constructor-arg name="id" value="1001"/>
-        <constructor-arg name="name" value="张三"/>
-        <constructor-arg name="school" ref="mySchool"/>
+        <property name="id" value="1001"/>
+        <property name="name" value="张三"/>
+        <property name="school" ref="mySchool"/>
     </bean>
 </beans>
