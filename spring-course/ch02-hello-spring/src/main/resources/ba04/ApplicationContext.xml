@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+   引用数据类型注入
+   使用<constructor-arg>标签，表示构造方法的一个参数
+   name:构造方法的形参名
+   index：参数位置，从左往右0,1,2
+   value：如果构造方法的形参是简单类型，使用value
+   ref：如果构造方法的形参是引用类型，使用ref
+   -->
+    <bean class="com.bjpowernode.ba04.Student" id="student">
+        <constructor-arg name="Mid" value="10086"/>
+        <constructor-arg name="Mname" value="mike"/>
+        <constructor-arg name="Mschool" ref="school"/>
+    </bean>
+
+    <bean class="com.bjpowernode.ba04.School" id="school">
+        <property name="name" value="北大"/>
+        <property name="addr" value="北京"/>
+    </bean>
+</beans>
