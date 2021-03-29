@@ -20,6 +20,7 @@ public class Test03 {
         String config = "ba03/ApplicationContext.xml";
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
         SomeService service = (SomeService) ac.getBean("service");
+        //之所以能改变结果，原理简单理解为：String s = service.myAround("mike", 25);
         String s = service.doFirst("mike", 25);
         System.out.println(s);
     }
