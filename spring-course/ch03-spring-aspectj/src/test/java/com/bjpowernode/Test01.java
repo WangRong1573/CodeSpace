@@ -19,6 +19,6 @@ public class Test01 {
         String config = "ba01/ApplicationContext.xml";
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
         SomeService service = (SomeService) ac.getBean("service");
-        service.doSome("mike",20);
+        service.doSome("lisa",20);
     }
 }
