@@ -20,7 +20,6 @@ public class Test03 {
         String config = "ba03/ApplicationContext.xml";
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
         SomeService service = (SomeService) ac.getBean("service");
-        String s = service.doFirst("bili", 25);
-        System.out.println(s);
+        service.doFirst("mike", 25);
     }
 }
