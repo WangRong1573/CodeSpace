@@ -1,0 +1,18 @@
+spring集成mybatis开发步骤
+1.创建maven项目
+2.加入maven依赖
+    spring依赖
+    mybatis依赖
+    mysql驱动
+    spring的事务
+    mybatis和spring集成的依赖，mybatis官方提供的，用来在spring中创建mybatis的SqlSessionFactory，dao对象的
+3.创建实体类
+4.创建dao接口和mapper文件
+5.创建mybatis的主配置文件
+6.创建service接口和实现类，属性是dao
+7.创建spring配置文件，声明mybatis的对象交给spring创建
+    数据源
+    SqlSessionFactory
+    dao对象
+    声明自定义的service
+8.创建测试类，获取service对象，通过service对象调用dao完成数据库的访问
