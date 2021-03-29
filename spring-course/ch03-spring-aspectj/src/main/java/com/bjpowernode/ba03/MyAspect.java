@@ -43,6 +43,7 @@ public class MyAspect {
             obj = pjp.proceed();
         }
         String result = (String) obj;
+        result = "hello 我是改变后的结果";
         System.out.println("模拟提交事务");
         return result;
     }
