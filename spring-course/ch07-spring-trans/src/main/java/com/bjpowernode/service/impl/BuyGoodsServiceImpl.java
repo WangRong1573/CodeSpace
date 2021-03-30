@@ -6,6 +6,9 @@ import com.bjpowernode.domain.Goods;
 import com.bjpowernode.domain.Sale;
 import com.bjpowernode.execp.NotEnoughException;
 import com.bjpowernode.service.BuyGoodsService;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -30,6 +33,17 @@ public class BuyGoodsServiceImpl implements BuyGoodsService {
         this.goodsDao = goodsDao;
     }
 
+//    @Transactional(
+//            propagation = Propagation.REQUIRED,
+//            isolation = Isolation.DEFAULT,
+//            readOnly = false,
+//            rollbackFor = {
+//                    //表示指定异常时一定回滚
+//                    NotEnoughException.class,NullPointerException.class
+//            }
+//    )
+    //因为使用默认值，配置值可以省略
+    @Transactional
     @Override
     public void buy(Integer goodsId, Integer nums) {
 
