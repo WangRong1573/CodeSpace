@@ -17,6 +17,10 @@
         /WEB-INF/applicationContext.xml 就是监听器默认读取的spring配置文件路径
 
         可以修改默认文件位置，使用context-param重新指定文件位置
+
+        配置监听器：
+        目的就是创建容器对象，创建了容器对象，就能把applicationContext.xml配置文件中的所有对象都创建好，
+        用户发起请求就可以直接使用对象了
 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
