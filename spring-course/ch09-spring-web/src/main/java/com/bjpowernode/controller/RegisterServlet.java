@@ -4,6 +4,7 @@ import com.bjpowernode.domain.Student;
 import com.bjpowernode.service.StudentService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,12 +17,21 @@ public class RegisterServlet extends HttpServlet {
         String name = request.getParameter("name");
         String age = request.getParameter("age");
 
-        //创建spring容器对象
+        /*//创建spring容器对象
         String config = "ApplicationContext.xml";
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
-        System.out.println("容器中对象的信息："+ac);
+        System.out.println("容器中对象的信息："+ac);*/
 
-        StudentService service = (StudentService) ac.getBean("studentService");
+        WebApplicationContext ctx = null;
+        //获取ServletContext中的容器对象
+        String key = WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE;
+        Object attribute = getServletContext().getAttribute(key);
+        if (attribute != null){
+            ctx =(WebApplicationContext)attribute;
+        }
+        System.out.println("容器中对象的信息："+ctx);
+
+        StudentService service = (StudentService) ctx.getBean("studentService");
         Student student = new Student();
         student.setName(name);
         student.setAge(Integer.valueOf(age));
