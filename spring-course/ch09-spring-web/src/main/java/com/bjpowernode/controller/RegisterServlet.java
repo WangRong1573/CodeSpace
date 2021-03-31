@@ -5,7 +5,9 @@ import com.bjpowernode.service.StudentService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,13 +24,17 @@ public class RegisterServlet extends HttpServlet {
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
         System.out.println("容器中对象的信息："+ac);*/
 
-        WebApplicationContext ctx = null;
-        //获取ServletContext中的容器对象
+       WebApplicationContext ctx = null;
+        /* //获取ServletContext中的容器对象
         String key = WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE;
         Object attribute = getServletContext().getAttribute(key);
         if (attribute != null){
             ctx =(WebApplicationContext)attribute;
-        }
+        }*/
+
+       //使用工具类,获取容器对象
+        ServletContext sc = getServletContext();
+        ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(sc);
         System.out.println("容器中对象的信息："+ctx);
 
         StudentService service = (StudentService) ctx.getBean("studentService");
