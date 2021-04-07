@@ -2,6 +2,7 @@ package com.bjpowernode.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -31,6 +32,26 @@ public class MyController {
      */
     @RequestMapping(value = "/reg.do")
     public ModelAndView doReg(String name,Integer age){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("name",name);
+        mv.addObject("age",age);
+        mv.setViewName("reg");
+        return mv;
+    }
+
+    /**
+     * @RequestParam 逐个接收请求参数中，解决请求中参数名和形参名不一致问题
+     *      属性：value 请求中的形参名称
+     *              required，布尔值，默认是true，表示请求中必须包含此参数
+     *
+     *      位置：在处理器方法形参定义的前面
+     * @param name
+     * @param age
+     * @return
+     */
+    @RequestMapping(value = "/receiveParam.do")
+    public ModelAndView receiveParam(@RequestParam(value = "pname",required = false) String name,
+                                     @RequestParam(value = "page",required = false) Integer age){
         ModelAndView mv = new ModelAndView();
         mv.addObject("name",name);
         mv.addObject("age",age);

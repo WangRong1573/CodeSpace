@@ -17,5 +17,12 @@
     年龄：<input type="text" name="age"><br>
     <input type="submit" value="提交">
 </form>
+<br>
+请求中参数名和处理器方法的形参名不一致时：
+<form action="receiveParam.do" method="post">
+    用户名：<input type="text" name="pname"><br>
+    年龄：<input type="text" name="page"><br>
+    <input type="submit" value="提交">
+</form>
 </body>
 </html>
