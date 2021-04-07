@@ -22,4 +22,19 @@ public class MyController {
         mv.setViewName("result");
         return mv;
     }
+
+    /**
+     *
+     * @param name 处理器方法的形参名需要与请求中的参数名保持一致，同名的请求参数赋值给同名的形参
+     * @param age
+     * @return
+     */
+    @RequestMapping(value = "/reg.do")
+    public ModelAndView doReg(String name,Integer age){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("name",name);
+        mv.addObject("age",age);
+        mv.setViewName("reg");
+        return mv;
+    }
 }
