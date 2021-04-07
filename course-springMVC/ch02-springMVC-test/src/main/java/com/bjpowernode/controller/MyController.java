@@ -1,5 +1,6 @@
 package com.bjpowernode.controller;
 
+import demo.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,6 +57,16 @@ public class MyController {
         mv.addObject("name",name);
         mv.addObject("age",age);
         mv.setViewName("reg");
+        return mv;
+    }
+
+    @RequestMapping(value = "/receiveObject.do")
+    public ModelAndView receiveObject(Student student){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("name",student.getName());
+        mv.addObject("age",student.getAge());
+        mv.addObject("student",student);
+        mv.setViewName("obj");
         return mv;
     }
 }

@@ -24,5 +24,12 @@
     年龄：<input type="text" name="page"><br>
     <input type="submit" value="提交">
 </form>
+<br>
+使用对象接收参数：
+<form action="receiveObject.do" method="post">
+    用户名：<input type="text" name="name"><br>
+    年龄：<input type="text" name="age"><br>
+    <input type="submit" value="提交">
+</form>
 </body>
 </html>
