@@ -9,6 +9,24 @@
 <html>
 <head>
     <title>Title</title>
+    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn").click(function () {
+                $.ajax({
+                    url:"returnVoid.do",
+                    data:{
+                        name:"mike",
+                        age:30
+                    },
+                    dataType:"json",
+                    success:function (resp) {
+                        alert(resp.name+ "   "+resp.age);
+                    }
+                })
+            })
+        })
+    </script>
 </head>
 <body>
 <form action="returnString.do" method="post">
@@ -16,5 +34,7 @@
     年龄：<input type="text" name="age"><br>
     <input type="submit" value="提交">
 </form>
+<br>
+<button id="btn">使用按钮发送ajax请求，测试返回void类型</button>
 </body>
 </html>
