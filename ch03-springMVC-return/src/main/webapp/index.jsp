@@ -25,6 +25,19 @@
                     }
                 })
             })
+            $("#stuBtn").click(function () {
+                $.ajax({
+                    url:"returnStudentJsonObject.do",
+                    data:{
+                        name:"mike",
+                        age:30
+                    },
+                    dataType:"json",
+                    success:function (resp) {
+                        alert(resp.name+ "   "+resp.age);
+                    }
+                })
+            })
         })
     </script>
 </head>
@@ -36,5 +49,8 @@
 </form>
 <br>
 <button id="btn">使用按钮发送ajax请求，测试返回void类型</button>
+
+<br>
+<button id="stuBtn">使用按钮发送ajax请求，测试返回Object类型</button>
 </body>
 </html>
