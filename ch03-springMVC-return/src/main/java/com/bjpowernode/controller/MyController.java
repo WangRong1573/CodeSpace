@@ -83,4 +83,18 @@ public class MyController {
         list.add(student);
         return list;
     }
+
+    /**
+     * 处理器方法返回String，表示数据，不是视图
+     * 区别：看有没有@ResponseBody注解，有是数据，没有就是视图
+     *
+     * 默认使用东欧8859-1编码格式进行编码，会有中文乱码问题，使用@RequestMapping的produces属性指定新的编码格式
+     * @return
+     * @throws IOException
+     */
+    @ResponseBody
+    @RequestMapping(value = "/returnStringData.do",produces = "text/plain;charset=utf-8")
+    public String returnStringData() throws IOException {
+        return "hello springMVC 返回文本，表示数据，不是视图";
+    }
 }

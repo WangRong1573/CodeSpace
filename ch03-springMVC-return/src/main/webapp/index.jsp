@@ -53,6 +53,15 @@
                     }
                 })
             });
+            $("#stringDataBtn").click(function () {
+                $.ajax({
+                    url:"returnStringData.do",
+                    dataType:"text",
+                    success:function (resp) {
+                        alert(resp);
+                    }
+                })
+            });
         })
     </script>
 </head>
@@ -70,4 +79,6 @@
 </body>
 <br>
 <button id="stuListBtn">使用按钮发送ajax请求，测试返回List类型</button>
+<br>
+<button id="stringDataBtn">使用按钮发送ajax请求，测试返回String文本类型</button>
 </html>
