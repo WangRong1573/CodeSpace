@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -64,5 +66,21 @@ public class MyController {
         student.setName("张三同学");
         student.setAge(66);
         return student;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/returnStudentJsonObjectArray.do")
+    public List<Student> returnStudentJsonObjectArray() throws IOException {
+        List<Student> list = new ArrayList<>();
+        //模拟调用service，获取请求结果
+        Student student = new Student();
+        student.setName("张三同学");
+        student.setAge(66);
+        list.add(student);
+        student = new Student();
+        student.setName("小二同学");
+        student.setAge(18);
+        list.add(student);
+        return list;
     }
 }

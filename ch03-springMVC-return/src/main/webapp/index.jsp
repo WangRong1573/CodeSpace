@@ -24,7 +24,7 @@
                         alert(resp.name+ "   "+resp.age);
                     }
                 })
-            })
+            });
             $("#stuBtn").click(function () {
                 $.ajax({
                     url:"returnStudentJsonObject.do",
@@ -37,7 +37,22 @@
                         alert(resp.name+ "   "+resp.age);
                     }
                 })
-            })
+            });
+            $("#stuListBtn").click(function () {
+                $.ajax({
+                    url:"returnStudentJsonObjectArray.do",
+                    data:{
+                        name:"mike",
+                        age:30
+                    },
+                    dataType:"json",
+                    success:function (resp) {
+                        $.each(resp,function (i,element) {
+                            alert(element.name+"    "+element.age);
+                        })
+                    }
+                })
+            });
         })
     </script>
 </head>
@@ -53,4 +68,6 @@
 <br>
 <button id="stuBtn">使用按钮发送ajax请求，测试返回Object类型</button>
 </body>
+<br>
+<button id="stuListBtn">使用按钮发送ajax请求，测试返回List类型</button>
 </html>
