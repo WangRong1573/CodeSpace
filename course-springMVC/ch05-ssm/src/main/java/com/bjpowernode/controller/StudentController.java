@@ -5,7 +5,10 @@ import com.bjpowernode.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * tip：好好学习，天天向上！坚持
@@ -32,5 +35,12 @@ public class StudentController {
         mv.addObject("tips",tips);
         mv.setViewName("result");
         return mv;
+    }
+
+    @ResponseBody
+    @RequestMapping("/query.do")
+    public List<Student> query(){
+        List<Student> students = service.query();
+        return students;
     }
 }

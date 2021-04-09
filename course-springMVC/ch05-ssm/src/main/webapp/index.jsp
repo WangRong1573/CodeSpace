@@ -22,6 +22,12 @@
             <a href="addStudent.jsp">注册学生</a>
         </td>
     </tr>
+
+    <tr>
+        <td>
+            <a href="show.jsp">查看所有学生信息</a>
+        </td>
+    </tr>
 </table>
 </body>
 </html>
