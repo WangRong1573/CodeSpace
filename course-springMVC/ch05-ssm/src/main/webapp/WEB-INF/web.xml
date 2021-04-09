@@ -18,7 +18,7 @@
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
-    <!--    监听器-->
+    <!--    spring监听器-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:conf/applicationContext.xml</param-value>
