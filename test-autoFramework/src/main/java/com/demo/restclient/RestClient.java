@@ -9,6 +9,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.util.*;
@@ -75,4 +76,36 @@ public class RestClient {
         CloseableHttpResponse response = httpClient.execute(post);
         return response;
     }
+
+    /**
+     * post请求优化写法
+     * @param url
+     * @param map
+     * @return
+     * @throws IOException
+     */
+    public static String doPost2(String url, HashMap<String,String> map) throws IOException {
+        HttpPost post = new HttpPost(url);
+
+        //当需要请求头时
+        //post.setHeader("Accept","application/json");
+
+        //请求体中参数
+        //参数格式：{"name": "morpheus", "job": "leader" }
+        List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+        Set<String> keySet = map.keySet();
+        for (String key:keySet){
+            //每个键值对包装成名值对
+            pairs.add(new BasicNameValuePair(key,map.get(key)));
+        }
+        //将参数设置到请求体
+        post.setEntity(new UrlEncodedFormEntity(pairs));
+
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        CloseableHttpResponse response = httpClient.execute(post);
+        HttpEntity entity = response.getEntity();
+        String string = EntityUtils.toString(entity);
+        return string;
+    }
+
 }

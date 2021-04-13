@@ -47,4 +47,30 @@ public class TestPost {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void testPost2(){
+        String host = ResourceUtil.getHost();
+        String url = host + "/api/users";
+
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("name","morpheus");
+        map.put("job","leader");
+
+        try {
+            CloseableHttpResponse response = RestClient.doPost(url, map);
+
+            Assert.assertEquals(ResourceUtil.RESPONSE_STATUS_CODE_201,
+                    response.getStatusLine().getStatusCode(),"response status code is not 200");
+
+            //将响应内容转为json
+            HttpEntity entity = response.getEntity();
+            String string = EntityUtils.toString(entity);
+            JSONObject jsonObject = JSON.parseObject(string);
+            System.out.println(jsonObject);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
