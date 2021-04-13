@@ -11,6 +11,12 @@ import java.util.ResourceBundle;
  **/
 
 public class ResourceUtil {
+    //定义异常状态码
+    public static int RESPONSE_STATUS_CODE_200 = 200;
+    public static int RESPONSE_STATUS_CODE_201 = 201;
+    public static int RESPONSE_STATUS_CODE_404 = 404;
+    public static int RESPONSE_STATUS_CODE_500 = 500;
+
     public static String getHost(){
         ResourceBundle bundle = ResourceBundle.getBundle("config");
         return bundle.getString("host");
