@@ -7,6 +7,16 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
+    <!--过滤器，处理中文乱码问题-->
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>com.bjpowernode.crm.web.filter.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>userController</servlet-name>
         <servlet-class>com.bjpowernode.crm.settings.web.controller.UserController</servlet-class>

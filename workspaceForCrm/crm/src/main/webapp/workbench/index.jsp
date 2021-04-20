@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,16 +10,16 @@
 
 	//页面加载完毕
 	$(function(){
-		
+
 		//导航中所有文本颜色为黑色
 		$(".liClass > a").css("color" , "black");
-		
+
 		//默认选中导航菜单中的第一个菜单项
 		$(".liClass:first").addClass("active");
-		
+
 		//第一个菜单项的文字变成白色
 		$(".liClass:first > a").css("color" , "white");
-		
+
 		//给所有的菜单项注册鼠标单击事件
 		$(".liClass").click(function(){
 			//移除所有菜单项的激活状态
@@ -30,17 +31,17 @@
 			//当前项目颜色变成白色
 			$(this).children("a").css("color","white");
 		});
-		
-		
+
+
 		window.open("main/index.html","workareaFrame");
-		
+
 	});
-	
+
 </script>
 
 </head>
 <body>
-	
+
 	<!-- 我的资料 -->
 	<div class="modal fade" id="myInformation" role="dialog">
 		<div class="modal-dialog" role="document" style="width: 30%;">
@@ -86,14 +87,14 @@
 								<input type="text" class="form-control" id="oldPwd" style="width: 200%;">
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="newPwd" class="col-sm-2 control-label">新密码</label>
 							<div class="col-sm-10" style="width: 300px;">
 								<input type="text" class="form-control" id="newPwd" style="width: 200%;">
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label for="confirmPwd" class="col-sm-2 control-label">确认密码</label>
 							<div class="col-sm-10" style="width: 300px;">
@@ -109,7 +110,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- 退出系统的模态窗口 -->
 	<div class="modal fade" id="exitModal" role="dialog">
 		<div class="modal-dialog" role="document" style="width: 30%;">
@@ -130,7 +131,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- 顶部 -->
 	<div id="top" style="height: 50px; background-color: #3C3C3C; width: 100%;">
 		<div style="position: absolute; top: 5px; left: 0px; font-size: 30px; font-weight: 400; color: white; font-family: 'times new roman'">CRM &nbsp;<span style="font-size: 12px;">&copy;2017&nbsp;动力节点</span></div>
@@ -138,7 +139,7 @@
 			<ul>
 				<li class="dropdown user-dropdown">
 					<a href="javascript:void(0)" style="text-decoration: none; color: white;" class="dropdown-toggle" data-toggle="dropdown">
-						<span class="glyphicon glyphicon-user"></span> zhangsan <span class="caret"></span>
+						<span class="glyphicon glyphicon-user"></span> ${user.name} <span class="caret"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="../settings/index.html"><span class="glyphicon glyphicon-wrench"></span> 系统设置</a></li>

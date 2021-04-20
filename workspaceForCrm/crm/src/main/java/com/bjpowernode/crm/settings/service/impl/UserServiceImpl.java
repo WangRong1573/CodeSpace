@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
             throw new LoginException("账号密码错误");
         }
         //账号密码正确，验证其他三项信息
-        String expireTime = user.getCreateTime();
+        String expireTime = user.getExpireTime();
         String currentTime = DateTimeUtil.getSysTime();
         if (expireTime.compareTo(currentTime)<0){
             throw new LoginException("账号已失效");
