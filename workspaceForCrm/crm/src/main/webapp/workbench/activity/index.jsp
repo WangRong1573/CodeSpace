@@ -18,9 +18,12 @@
     <script type="text/javascript">
 
         $(function () {
-			//为创建按钮绑定事件，打开添加模态窗
-			//模态窗使用方式：需要操作的窗口的jQuery对象，调用modal方法：参数 show：打开，hide 关闭模态窗
-			$("#createActivityModal").modal("show");
+            $("#addBtn").click(function () {
+                //为创建按钮绑定事件，打开添加模态窗
+                //模态窗使用方式：需要操作的窗口的jQuery对象，调用modal方法：参数 show：打开，hide 关闭模态窗
+                $("#createActivityModal").modal("show");
+            });
+
 
         });
 
