@@ -21,7 +21,25 @@
             $("#addBtn").click(function () {
                 //为创建按钮绑定事件，打开添加模态窗
                 //模态窗使用方式：需要操作的窗口的jQuery对象，调用modal方法：参数 show：打开，hide 关闭模态窗
-                $("#createActivityModal").modal("show");
+                //$("#createActivityModal").modal("show");
+
+                //取用户信息列表
+                $.ajax({
+                    url:"getUserList.do",
+                    type:"get",
+                    dataType:"json",
+                    success:function (data) {
+                        var html = "<option></option>";
+                        $.each(data,function (i,n) {
+                            html += "<option value='"+n.id+"'>"+n.name+"</option>";
+                        });
+                        $("#create-marketActivityOwner").html(html);
+
+                        //获取数据后打开模态窗口
+                        $("#createActivityModal").modal("show");
+                    }
+                })
+
             });
 
 
@@ -50,9 +68,7 @@
                                 style="font-size: 15px; color: red;">*</span></label>
                         <div class="col-sm-10" style="width: 300px;">
                             <select class="form-control" id="create-marketActivityOwner">
-                                <option>zhangsan</option>
-                                <option>lisi</option>
-                                <option>wangwu</option>
+                                //userList
                             </select>
                         </div>
                         <label for="create-marketActivityName" class="col-sm-2 control-label">名称<span
