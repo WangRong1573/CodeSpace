@@ -14,6 +14,10 @@
     <script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(function () {
+
+            if(window.top!=window){
+                window.top.location = window.location;
+            }
         	//页面加载完毕后，将用户名文本框内容清空
 			$("#loginAct").val("");
             //页面加载完毕后，用户名输入框自动获取焦点
