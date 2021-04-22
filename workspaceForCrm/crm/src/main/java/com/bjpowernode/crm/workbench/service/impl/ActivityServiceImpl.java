@@ -4,6 +4,10 @@ import com.bjpowernode.crm.utils.SqlSessionUtil;
 import com.bjpowernode.crm.workbench.dao.ActivityDao;
 import com.bjpowernode.crm.workbench.domain.Activity;
 import com.bjpowernode.crm.workbench.service.ActivityService;
+import com.bjpowernode.vo.PaginationVO;
+
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * tip：好好学习，天天向上！坚持
@@ -27,5 +31,20 @@ public class ActivityServiceImpl implements ActivityService {
             flag = false;
         }
         return flag;
+    }
+
+    @Override
+    public PaginationVO<Activity> pageList(HashMap<String, Object> map) {
+
+        //取得total
+        int total = activityDao.getTotalByCondition(map);
+        //取得dataList
+        List<Activity> dataList = activityDao.getActivityListByCondition(map);
+        //封装到vo中
+        PaginationVO<Activity> vo = new PaginationVO<>();
+        vo.setTotal(total);
+        vo.setDataList(dataList);
+        //返回vo
+        return vo;
     }
 }

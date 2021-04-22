@@ -10,12 +10,15 @@ import com.bjpowernode.crm.utils.UUIDUtil;
 import com.bjpowernode.crm.workbench.domain.Activity;
 import com.bjpowernode.crm.workbench.service.ActivityService;
 import com.bjpowernode.crm.workbench.service.impl.ActivityServiceImpl;
+import com.bjpowernode.vo.PaginationVO;
+import com.sun.org.apache.regexp.internal.RE;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -36,7 +39,45 @@ public class ActivityController extends HttpServlet {
             getUserList(request,response);
         }else if ("/workbench/activity/save.do".equals(path)){
             save(request,response);
+        }else if ("/workbench/activity/pageList.do".equals(path)){
+            pageList(request,response);
         }
+    }
+
+    private void pageList(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("市场活动信息列表操作");
+
+        String name = request.getParameter("name");
+        String owner = request.getParameter("owner");
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");
+        String pageNoStr = request.getParameter("pageNo");
+        String pageSizeStr = request.getParameter("pageSize");
+        int pageNo = Integer.parseInt(pageNoStr);
+        int pageSize = Integer.parseInt(pageSizeStr);
+        //略过的记录数：
+        int skipCount = (pageNo-1)*pageSize;
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("name",name);
+        map.put("owner",owner);
+        map.put("startDate",startDate);
+        map.put("endDate",endDate);
+        map.put("skipCount",skipCount);
+        map.put("pageSize",pageSize);
+        ActivityService service = (ActivityService) ServiceFactory.getService(new ActivityServiceImpl());
+        /*
+         *前端要的数据类型是{"total":"100","dataList":[{市场1}，{市场2}..]}
+         *
+         * 返回数据类型可以是
+         * map
+         * VO
+         *
+         * 因为复用性高，其他类型可能都会做分页查询，所以选择使用VO
+         */
+        PaginationVO<Activity> vo = service.pageList(map);
+        PrintJson.printJsonObj(response,vo);
+
     }
 
     private void save(HttpServletRequest request, HttpServletResponse response) {

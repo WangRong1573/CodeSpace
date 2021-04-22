@@ -23,7 +23,7 @@
                 //日历组件
                 $(".time").datetimepicker({
                     minView: "month",
-                    language:  'zh-CN',
+                    language: 'zh-CN',
                     format: 'yyyy-mm-dd',
                     autoclose: true,
                     todayBtn: true,
@@ -36,13 +36,13 @@
 
                 //取用户信息列表
                 $.ajax({
-                    url:"getUserList.do",
-                    type:"get",
-                    dataType:"json",
-                    success:function (data) {
+                    url: "getUserList.do",
+                    type: "get",
+                    dataType: "json",
+                    success: function (data) {
                         var html = "<option></option>";
-                        $.each(data,function (i,n) {
-                            html += "<option value='"+n.id+"'>"+n.name+"</option>";
+                        $.each(data, function (i, n) {
+                            html += "<option value='" + n.id + "'>" + n.name + "</option>";
                         });
                         $("#create-owner").html(html);
 
@@ -60,19 +60,19 @@
             $("#saveBtn").click(function () {
 
                 $.ajax({
-                    url:"save.do",
+                    url: "save.do",
                     type: "post",
-                    data:{
-                        "owner":$.trim($("#create-owner").val()),
-                        "name":$.trim($("#create-name").val()),
-                        "startDate":$.trim($("#create-startDate").val()),
-                        "endDate":$.trim($("#create-endDate").val()),
-                        "cost":$.trim($("#create-cost").val()),
-                        "description":$.trim($("#create-description").val())
+                    data: {
+                        "owner": $.trim($("#create-owner").val()),
+                        "name": $.trim($("#create-name").val()),
+                        "startDate": $.trim($("#create-startDate").val()),
+                        "endDate": $.trim($("#create-endDate").val()),
+                        "cost": $.trim($("#create-cost").val()),
+                        "description": $.trim($("#create-description").val())
                     },
                     dataType: "json",
-                    success:function (data) {
-                        if (data.success){
+                    success: function (data) {
+                        if (data.success) {
                             //添加成功，局部刷新列表，关闭模态窗
 
                             //清除添加操作时添加的数据
@@ -84,7 +84,7 @@
                             $("#activityAddForm")[0].reset();
 
                             $("#createActivityModal").modal("hide");
-                        }else {
+                        } else {
                             alert("添加市场活动失败");
                         }
                     }
@@ -92,9 +92,49 @@
 
             });
 
+            pageList(1, 2);
+
+            //为查询按钮绑定事件
+            $("#searchBtn").click(function () {
+                pageList(1, 2);
+            })
 
         });
 
+        function pageList(pageNo, pageSize) {
+            $.ajax({
+                url: "pageList.do",
+                data: {
+                    "pageNo": pageNo,
+                    "pageSize": pageSize,
+                    "name": $.trim($("#search-name").val()),
+                    "owner": $.trim($("#search-owner").val()),
+                    "startDate": $.trim($("#search-startDate").val()),
+                    "endDate": $.trim($("#search-endDate").val())
+                },
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    /*
+                    data
+                    * {"total":"","dataList":[{市场活动1}，{2}，{3}...]}
+                    * */
+                    var html = "";
+                    $.each(data.dataList, function (i, n) {
+                        html += '<tr class="active">';
+                        html += '<td><input type="checkbox" value="'+n.id+'"/></td>';
+                        html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'detail.jsp\';">'+n.name+'</a>';
+                        html += '</td>';
+                        html += '<td>'+n.owner+'</td>';
+                        html += '<td>'+n.startDate+'</td>';
+                        html += ' <td>'+n.endDate+'</td>';
+                        html += ' </tr>';
+                    })
+                    $("#activityBody").html(html);
+
+                }
+            })
+        }
     </script>
 </head>
 <body>
@@ -248,14 +288,14 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">名称</div>
-                        <input class="form-control" type="text">
+                        <input class="form-control" type="text" id="search-name">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">所有者</div>
-                        <input class="form-control" type="text">
+                        <input class="form-control" type="text" id="search-owner">
                     </div>
                 </div>
 
@@ -263,17 +303,17 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">开始日期</div>
-                        <input class="form-control" type="text" id="startTime"/>
+                        <input class="form-control" type="text" id="search-startDate"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">结束日期</div>
-                        <input class="form-control" type="text" id="endTime">
+                        <input class="form-control" type="text" id="search-endDate">
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-default">查询</button>
+                <button type="button" id="searchBtn" class="btn btn-default">查询</button>
 
             </form>
         </div>
@@ -314,8 +354,8 @@
                     <td>结束日期</td>
                 </tr>
                 </thead>
-                <tbody>
-                <tr class="active">
+                <tbody id="activityBody">
+                <%--<tr class="active">
                     <td><input type="checkbox"/></td>
                     <td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='detail.jsp';">发传单</a>
                     </td>
@@ -330,7 +370,7 @@
                     <td>zhangsan</td>
                     <td>2020-10-10</td>
                     <td>2020-10-20</td>
-                </tr>
+                </tr>--%>
                 </tbody>
             </table>
         </div>
