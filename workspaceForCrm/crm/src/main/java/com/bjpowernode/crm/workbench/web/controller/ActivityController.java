@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * tip：好好学习，天天向上！坚持
@@ -43,7 +44,51 @@ public class ActivityController extends HttpServlet {
             pageList(request,response);
         }else if ("/workbench/activity/delete.do".equals(path)){
             delete(request,response);
+        }else if ("/workbench/activity/getUserListAndActivity.do".equals(path)){
+            getUserListAndActivity(request,response);
+        }else if ("/workbench/activity/update.do".equals(path)){
+            update(request,response);
         }
+    }
+
+    private void update(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("执行市场活动更新提交操作");
+        String id = request.getParameter("id");
+        String owner = request.getParameter("owner");
+        String name = request.getParameter("name");
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");
+        String cost = request.getParameter("cost");
+        String description = request.getParameter("description");
+        String editTime = DateTimeUtil.getSysTime();
+        String editBy = ((User)request.getSession().getAttribute("user")).getName();
+
+        Activity activity = new Activity();
+        activity.setId(id);
+        activity.setOwner(owner);
+        activity.setName(name);
+        activity.setStartDate(startDate);
+        activity.setEndDate(endDate);
+        activity.setCost(cost);
+        activity.setDescription(description);
+        activity.setEditTime(editTime);
+        activity.setEditBy(editBy);
+
+        ActivityService service = (ActivityService) ServiceFactory.getService(new ActivityServiceImpl());
+
+        boolean flag = service.update(activity);
+
+        PrintJson.printJsonFlag(response,flag);
+
+
+    }
+
+    private void getUserListAndActivity(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("执行市场活动修改操作");
+        String id = request.getParameter("id");
+        ActivityService service = (ActivityService) ServiceFactory.getService(new ActivityServiceImpl());
+        Map<String,Object> map = service.getUserListAndActivity(id);
+        PrintJson.printJsonObj(response,map);
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) {
