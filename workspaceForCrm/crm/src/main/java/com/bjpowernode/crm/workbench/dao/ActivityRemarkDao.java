@@ -8,5 +8,8 @@ package com.bjpowernode.crm.workbench.dao;
  * @Date 2021/4/21
  **/
 
-public class ActivityRemarkDao {
+public interface ActivityRemarkDao {
+    int getCountByAids(String[] ids);
+
+    int deleteByAids(String[] ids);
 }

@@ -114,11 +114,56 @@
             $("#activityBody").on("click",$("input[name=xz]"),function () {
                 //当复选框勾选个数和列表复选框个数一样时，代表本页全部选中，则title栏的复选框变为勾选状态
                 $("#qx").prop("checked",$("input[name=xz]").length === $("input[name=xz]:checked").length);
-            })
+            });
+
+            //为删除按钮绑定事件
+            $("#deleteBtn").click(function () {
+
+                //找出复选框中所有已勾选的jQuery对象
+                var $xz = $("input[name=xz]:checked");
+                if ($xz.length === 0){
+                    alert("请选择需要删除的记录");
+                }else {
+
+                    if (confirm("确定删除选择的记录吗？")){
+                        //url:delete.do?k1=v1&k2=v2
+                        //拼接参数
+                        var param = "";
+                        //将$xz中的每一个dom元素遍历，取value
+                        for (var i=0;i<$xz.length;i++){
+                            param += "id="+$($xz[i]).val();
+                            if (i < $xz.length-1){
+                                param += "&";
+                            }
+                        }
+                        //alert(param);
+                        $.ajax({
+                            url:"delete.do",
+                            data:param,
+                            type:"get",
+                            dataType:"json",
+                            success:function (data) {
+                                if (data.success){
+
+                                    pageList(1,2);
+                                }else {
+                                    alert("删除失败");
+                                }
+                            }
+                        })
+                    }
+                }
+            });
+
+
+
 
         });
 
         function pageList(pageNo, pageSize) {
+
+            //取消全选的复选框勾选
+            $("#qx").prop("checked",false);
 
             $.ajax({
                 url: "pageList.do",
@@ -376,7 +421,7 @@
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editActivityModal"><span
                         class="glyphicon glyphicon-pencil"></span> 修改
                 </button>
-                <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> 删除</button>
+                <button type="button" class="btn btn-danger" id="deleteBtn"><span class="glyphicon glyphicon-minus"></span> 删除</button>
             </div>
 
         </div>
