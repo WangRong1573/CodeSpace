@@ -96,16 +96,30 @@
 
             });
 
+            //默认展开列表第一页，每页两条数据
             pageList(1, 2);
 
             //为查询按钮绑定事件
             $("#searchBtn").click(function () {
                 pageList(1, 2);
+            });
+
+            //为全选的复选框绑定事件，触发全选操作
+            $("#qx").click(function () {
+
+                $("input[name=xz]").prop("checked",this.checked);
+            });
+            //动态生成的元素不能以普通绑定事件的形式进行操作的，动态生成的元素需要以on方法形式来触发事件
+            //语法：$(需要绑定元素的有效外层元素).on(绑定事件方式，需要绑定元素的jQuery对象，回调函数)
+            $("#activityBody").on("click",$("input[name=xz]"),function () {
+                //当复选框勾选个数和列表复选框个数一样时，代表本页全部选中，则title栏的复选框变为勾选状态
+                $("#qx").prop("checked",$("input[name=xz]").length === $("input[name=xz]:checked").length);
             })
 
         });
 
         function pageList(pageNo, pageSize) {
+
             $.ajax({
                 url: "pageList.do",
                 data: {
@@ -126,7 +140,7 @@
                     var html = "";
                     $.each(data.dataList, function (i, n) {
                         html += '<tr class="active">';
-                        html += '<td><input type="checkbox" value="'+n.id+'"/></td>';
+                        html += '<td><input type="checkbox" name="xz" value="'+n.id+'"/></td>';
                         html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'detail.jsp\';">'+n.name+'</a>';
                         html += '</td>';
                         html += '<td>'+n.owner+'</td>';
@@ -162,7 +176,6 @@
     </script>
 </head>
 <body>
-
 <!-- 创建市场活动的模态窗口 -->
 <div class="modal fade" id="createActivityModal" role="dialog">
     <div class="modal-dialog" role="document" style="width: 85%;">
@@ -371,7 +384,7 @@
             <table class="table table-hover">
                 <thead>
                 <tr style="color: #B3B3B3;">
-                    <td><input type="checkbox"/></td>
+                    <td><input type="checkbox" id="qx"/></td>
                     <td>名称</td>
                     <td>所有者</td>
                     <td>开始日期</td>
