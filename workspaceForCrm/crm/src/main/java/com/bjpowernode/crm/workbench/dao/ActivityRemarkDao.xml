@@ -24,4 +24,9 @@
         select * from tbl_activity_remark
         where activityId = #{id};
     </select>
+
+    <delete id="deleteRemark">
+        delete from tbl_activity_remark
+        where id = #{id};
+    </delete>
 </mapper>
