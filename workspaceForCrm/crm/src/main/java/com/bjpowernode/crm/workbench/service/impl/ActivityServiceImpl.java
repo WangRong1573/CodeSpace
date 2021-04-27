@@ -85,8 +85,8 @@ public class ActivityServiceImpl implements ActivityService {
         //取activity对象
         Activity activity = activityDao.getActivityById(id);
         HashMap<String, Object> map = new HashMap<>();
-        map.put("uList",userList);
-        map.put("a",activity);
+        map.put("uList", userList);
+        map.put("a", activity);
         return map;
     }
 
@@ -94,9 +94,15 @@ public class ActivityServiceImpl implements ActivityService {
     public boolean update(Activity activity) {
         boolean flag = true;
         int count = activityDao.update(activity);
-        if (count != 1){
+        if (count != 1) {
             flag = false;
         }
         return flag;
+    }
+
+    @Override
+    public Activity detail(String id) {
+        Activity activity = activityDao.detail(id);
+        return activity;
     }
 }

@@ -16,4 +16,6 @@ public interface ActivityService {
     Map<String, Object> getUserListAndActivity(String id);
 
     boolean update(Activity activity);
+
+    Activity detail(String id);
 }

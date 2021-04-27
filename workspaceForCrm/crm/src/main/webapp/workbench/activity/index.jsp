@@ -270,7 +270,7 @@
                     $.each(data.dataList, function (i, n) {
                         html += '<tr class="active">';
                         html += '<td><input type="checkbox" name="xz" value="'+n.id+'"/></td>';
-                        html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'detail.jsp\';">'+n.name+'</a>';
+                        html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'detail.do?id='+n.id+'\';">'+n.name+'</a>';
                         html += '</td>';
                         html += '<td>'+n.owner+'</td>';
                         html += '<td>'+n.startDate+'</td>';
