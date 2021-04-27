@@ -78,7 +78,10 @@
                     success: function (data) {
                         if (data.success) {
                             //添加成功，局部刷新列表，关闭模态窗
+                            //pageList(1,2);
 
+                            //添加后回到首页，维持每页展示记录数
+                            pageList(1,$("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
                             //清除添加操作时添加的数据
                             /*
                             * 此处使用dom对象和jQuery对象互相转换知识
@@ -145,7 +148,9 @@
                             success:function (data) {
                                 if (data.success){
 
-                                    pageList(1,2);
+                                    //pageList(1,2);
+                                    //删除成功回到首页
+                                    pageList(1,$("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
                                 }else {
                                     alert("删除失败");
                                 }
@@ -222,7 +227,9 @@
                             * */
                         if (data.success) {
                             //修改成功后刷新列表
-                            pageList(1,2);
+                            //pageList(1,2);
+                            pageList($("#activityPage").bs_pagination('getOption', 'currentPage')
+                                ,$("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
 
                             //关闭模态窗
                             $("#editActivityModal").modal("hide");
