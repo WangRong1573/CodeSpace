@@ -105,4 +105,10 @@ public class ActivityServiceImpl implements ActivityService {
         Activity activity = activityDao.detail(id);
         return activity;
     }
+
+    @Override
+    public List<ActivityRemark> getRemarkList(String id) {
+        List<ActivityRemark> remarks = activityRemarkDao.getRemarkList(id);
+        return remarks;
+    }
 }

@@ -1,9 +1,11 @@
 package com.bjpowernode.crm.workbench.service;
 
 import com.bjpowernode.crm.workbench.domain.Activity;
+import com.bjpowernode.crm.workbench.domain.ActivityRemark;
 import com.bjpowernode.vo.PaginationVO;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public interface ActivityService {
@@ -18,4 +20,6 @@ public interface ActivityService {
     boolean update(Activity activity);
 
     Activity detail(String id);
+
+    List<ActivityRemark> getRemarkList(String id);
 }

@@ -8,6 +8,7 @@ import com.bjpowernode.crm.utils.PrintJson;
 import com.bjpowernode.crm.utils.ServiceFactory;
 import com.bjpowernode.crm.utils.UUIDUtil;
 import com.bjpowernode.crm.workbench.domain.Activity;
+import com.bjpowernode.crm.workbench.domain.ActivityRemark;
 import com.bjpowernode.crm.workbench.service.ActivityService;
 import com.bjpowernode.crm.workbench.service.impl.ActivityServiceImpl;
 import com.bjpowernode.vo.PaginationVO;
@@ -50,7 +51,17 @@ public class ActivityController extends HttpServlet {
             update(request,response);
         }else if ("/workbench/activity/detail.do".equals(path)){
             detail(request,response);
+        }else if ("/workbench/activity/getRemarkList.do".equals(path)){
+            getRemarkList(request,response);
         }
+    }
+
+    private void getRemarkList(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("进入到备注列表查询操作");
+        String id = request.getParameter("id");
+        ActivityService service = (ActivityService) ServiceFactory.getService(new ActivityServiceImpl());
+        List<ActivityRemark> remarks = service.getRemarkList(id);
+        PrintJson.printJsonObj(response,remarks);
     }
 
     private void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
