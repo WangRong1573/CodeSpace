@@ -23,4 +23,9 @@ public class TestRedisServiceImpl implements TestRedisService {
     public void put(String key, String value) {
         redisTemplate.opsForValue().set(key,value);
     }
+
+    @Override
+    public String get(String key) {
+        return (String) redisTemplate.opsForValue().get(key);
+    }
 }

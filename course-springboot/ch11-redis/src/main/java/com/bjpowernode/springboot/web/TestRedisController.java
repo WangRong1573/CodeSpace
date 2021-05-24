@@ -20,10 +20,28 @@ public class TestRedisController {
     @Autowired
     private TestRedisService testRedisService;
 
+    /**
+     * 存储键值对
+     * @param key
+     * @param value
+     * @return
+     */
     @RequestMapping(value = "/test")
     @ResponseBody
     public String test(String key, String value){
         testRedisService.put(key,value);
         return "已成功存入：值-"+key+",value"+value;
+    }
+
+    /**
+     * 通过key获取value值
+     * @param key
+     * @return
+     */
+    @RequestMapping(value = "/get")
+    @ResponseBody
+    public String get(String key){
+        String value = testRedisService.get(key);
+        return key+"---->"+value;
     }
 }
