@@ -1,0 +1,16 @@
+1.建立接口工程（maven工程，maven install，为了提供者和消费者引入jar包）
+2.创建springboot web工程，作为服务提供者
+    加入依赖（dubbo，注册中心，接口工程）
+    配置核心配置文件，声明为服务提供者
+3.创建springboot web工程
+    加入依赖（dubbo，注册中心，接口工程）
+    配置核心配置文件，声明为服务消费者
+4.在消费者工程内编写controller class文件
+    使用@Reference(interfaceClass = TestService.class,version = "1.0.0",check = false)
+    调用service层，在接口工程编写service
+
+5.在服务提供者项目编写service的实现类
+    使用@Component 注解将类交由spring 容器管理
+    使用@Service(interfaceClass = TestService.class,version = "1.0.0",timeout = 15000)
+
+6.在消费者和提供者执行入口类上添加@EnableDubboConfiguration注解，表示开启dubbo配置
