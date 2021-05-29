@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/test}">
+    <input type="submit" value="提交">
+</form>
+<br>
+
+<h2>绝对路径带参数</h2>
+<a href="http://localhost:8080/test1?id=15">绝对路径带参数id</a><br>
+<a th:href="@{http://localhost:8080/test1?id=20}">路径表达式写法</a>
+
+<h2>相对路径带参数</h2>
+<a th:href="@{/test1?id=21}">相对路径带参数</a>
+<a th:href="@{/test1?id=21&name='zs'}">相对路径带参数</a>
+
+<h2>相对路径带参数(后台获取的参数)</h2>
+<a th:href="@{'/jump?id='+${id}}">相对路径带参数(后台获取的参数id)</a>
+<br>
+<a th:href="@{'/test2?id='+${id}+'&name='+${name}+'&age='+${age}}">多个参数</a>
+<h4>简单写法</h4>
+<a th:href="@{/test2(id=${id},name=${name},age=${age})}">多个参数简单写法</a>
+</body>
+</html>
