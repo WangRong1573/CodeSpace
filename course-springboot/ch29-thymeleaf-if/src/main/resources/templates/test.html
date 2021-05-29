@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:if="${sex eq 1}">
+    性别为男
+</div>
+<div th:if="${sex ne 1}">
+    性别为女
+</div>
+<h2>th:unless用法与if相反，即为真时不显示</h2>
+<div th:unless="${sex eq 1}">
+    性别为男
+</div>
+<div th:unless="${sex ne 1}">
+    性别为女
+</div>
+<h2>switch case的使用</h2>
+<div th:switch="${sex}">
+    <span th:case="0">男</span>
+    <span th:case="1">女</span>
+    <span th:case="*">性别未知</span>
+</div>
+</body>
+</html>
