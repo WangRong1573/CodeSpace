@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="myList:${list}">
+    <div th:each="map:${myList}">
+        map集合的key是：<span th:text="${map.key}"></span>
+        <div th:each="mapValueList:${map.value}">
+            id:<span th:text="${mapValueList.id}"></span>
+            name:<span th:text="${mapValueList.name}"></span>
+            age:<span th:text="${mapValueList.age}"></span>
+        </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>
