@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>功能表达式对象</title>
+</head>
+<body>
+<span th:text="${date}"></span>
+<br>
+<span th:text="${#dates.format(date,'yyyy-MM-dd')}"></span>
+<div th:text="${data}">
+
+</div>
+<div th:text="${#strings.substring(data,0,10)}"></div>
+</body>
+</html>
