@@ -14,3 +14,21 @@ plugins:[
                                   }
       )
   ]
+
+
+js文件进行压缩处理
+uglifyjs-webpack-plugin   1.1.1版本和CLI2保持一致（练习项目用）
+npm install uglifyjs-webpack-plugin@1.1.1 --save-dev
+
+const uglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
+
+plugins:[
+      new webpack.BannerPlugin("最终版权归xx所有"),
+      new htmlWebpackPlugin({
+        //为自动生成的html配置模板，会找webpack.config.js同目录中的配置模板文件
+        template:'index.html'
+      }),
+      new uglifyjsWebpackPlugin()
+  ]
+
+ npm run build 查看js文件是否被压缩
