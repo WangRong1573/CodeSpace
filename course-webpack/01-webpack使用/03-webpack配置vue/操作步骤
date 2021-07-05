@@ -1,0 +1,19 @@
+npm install vue --save （2.5.21版本）
+
+npm run build打包编译，浏览器查看无效果展示，报错[Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or 　　use the compiler-included build
+
+解决方案：
+　　webpack.config.js增加配置：
+
+resolve:{
+//别名
+alias:{
+'vue$':'vue/dist/vue.esm.js'
+}
+}
+
+此时build报错缺少loader
+
+　　安装vue-loader和 vue-template-compiler
+
+　　npm install --save-dev vue-loader@13.0.0 vue-template-compiler@2.5.21
