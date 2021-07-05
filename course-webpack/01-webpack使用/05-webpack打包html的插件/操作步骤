@@ -1,0 +1,16 @@
+HtmlWebpackPlugin
+    自动生成一个index.html文件
+    将打包的js文件，自动通过script标签插入到body中
+
+安装插件
+    npm install html-webpack-plugin@3.2.0 --save-dev
+
+const htmlWebpackPlugin = require("html-webpack-plugin")
+plugins:[
+      //new webpack.BannerPlugin("最终版权归xx所有"),
+      new htmlWebpackPlugin({
+                                    //为自动生成的html配置模板，会找webpack.config.js同目录中的配置模板文件
+                                    template:'index.html'
+                                  }
+      )
+  ]
