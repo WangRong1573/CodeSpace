@@ -1,0 +1,23 @@
+不需要每次改动代码都执行npm run build
+    原理：先将改动在内存中，大大节省测试时间，只需要最后执行一次npm run build即可保存在磁盘中
+
+安装
+    npm install --save-dev webpack-dev-server@2.9.3
+
+devserver作为webpack中的一个选项，选项本身可以设置如下属性
+    contentBase：为哪一个文件夹提供本地服务，默认是根文件夹，这里需要填写./dist
+    port：端口号
+    inline：页面实时刷新
+    historyApiFallback：在SPA页面中，依赖HTML5的history模式
+
+
+devServer:{
+    contentBase:"./dist",
+    inline:true
+  }
+
+ 启动本地服务命令
+ webpack-dev-server，但是启动会报不是内部或者外部命令，因为不是全局安装
+
+ 配置package.json
+    "dev": "webpack-dev-server"
