@@ -1,0 +1,15 @@
+根据开发时配置和调试时配置可能不同
+    抽取公共部分
+    安装 npm install webpack-merge@4.1.5 --save-dev
+
+    参照build文件配置不同环境的打包配置
+
+    删除webpack.config.js
+
+    打包编译报错，更改package.json中命令，指定配置文件
+
+    "build": "webpack --config build/pro.config.js",
+    "dev": "webpack-dev-server --open --config build/dev.config.js"
+
+    此时发现打包到了build目录中，因为配置的是当前目录下的dist目录
+    解决办法：配置为上一层dist
