@@ -1,0 +1,7 @@
+const webpack = require("webpack")
+
+plugins:[
+    new webpack.BannerPlugin("最终版权归xx所有")
+  ]
+
+打包的js文件最上方可看到版权信息
