@@ -2,6 +2,7 @@ import vueRouter from 'vue-router'
 import Vue from "vue";
 import Home from "../components/Home";
 import About from "../components/About";
+import User from "../components/User";
 
 Vue.use(vueRouter)
 
@@ -18,6 +19,11 @@ const routes = [
   {
     path: '/about',
     component: About
+  },
+  {
+    //动态路由
+    path: "/user/:userId",
+    component: User
   }
 ]
 
