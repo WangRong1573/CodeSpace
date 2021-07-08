@@ -8,6 +8,9 @@ import Vue from "vue";
 const Home = ()=> import('../components/Home')
 const About = ()=> import('../components/About')
 const User = ()=> import('../components/User')
+const HomeNews = ()=> import('../components/HomeNews')
+const HomeMessage = ()=> import('../components/HomeMessage')
+
 
 Vue.use(vueRouter)
 
@@ -19,7 +22,23 @@ const routes = [
   },
   {
     path: '/home',
-    component: Home
+    component: Home,
+    //子路由
+    children:[
+      {
+        path:"",
+        redirect:'news'
+      },
+      {
+        //子路由路径不用/开头
+        path: "news",
+        component:HomeNews
+      },
+      {
+        path: "message",
+        component:HomeMessage
+      }
+    ]
   },
   {
     path: '/about',
