@@ -7,6 +7,7 @@ Vue.use(vueRouter)
 
 const routes = [
   {
+    //重定向到主页，path后可以是空字符串，也可以是 /
     path: '/',
     redirect: "/home"
   },
@@ -21,7 +22,9 @@ const routes = [
 ]
 
 const router = new vueRouter({
-  routes
+  routes,
+  //观察url变化
+  mode:'history'
 })
 
 export default router
