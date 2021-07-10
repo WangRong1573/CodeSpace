@@ -16,6 +16,11 @@
 <!--    通过代码方式实现路由跳转-->
 <!--    <button @click="homeClick">首页</button>-->
 <!--    <button @click="aboutClick">关于</button>-->
+
+
+<!--    vue router参数传递方式二，通过代码方式跳转路由传递参数-->
+    <button @click="userClick">用户2</button>
+    <button @click="profileClick">我的2</button>
   </div>
 </template>
 
@@ -30,6 +35,19 @@ export default {
     aboutClick(){
       this.$router.push("/about",()=>{});
       console.log("aboutClick");
+    },
+    userClick(){
+      this.$router.push('/user/'+this.userId)
+    },
+    profileClick(){
+      this.$router.push({
+        path:'/profile',
+        query:{
+          name:'kobe',
+          age:19,
+          height:1.87
+        }
+      })
     }
   },
   data(){
