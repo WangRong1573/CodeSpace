@@ -10,7 +10,13 @@
 
 <script>
 export default {
-  name: "Home"
+  name: "Home",
+
+  // created() {
+  //   console.log("home")
+  //   document.title = 'home'
+  //
+  // }
 }
 </script>
 

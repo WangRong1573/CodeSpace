@@ -5,12 +5,12 @@ import Vue from "vue";
 // import User from "../components/User";
 
 //路由懒加载
-const Home = ()=> import('../components/Home')
-const About = ()=> import('../components/About')
-const User = ()=> import('../components/User')
-const HomeNews = ()=> import('../components/HomeNews')
-const HomeMessage = ()=> import('../components/HomeMessage')
-const Profile = ()=> import('../components/Profile')
+const Home = () => import('../components/Home')
+const About = () => import('../components/About')
+const User = () => import('../components/User')
+const HomeNews = () => import('../components/HomeNews')
+const HomeMessage = () => import('../components/HomeMessage')
+const Profile = () => import('../components/Profile')
 
 
 Vue.use(vueRouter)
@@ -25,41 +25,58 @@ const routes = [
     path: '/home',
     component: Home,
     //子路由
-    children:[
+    children: [
       {
-        path:"",
-        redirect:'news'
+        path: "",
+        redirect: 'news'
       },
       {
         //子路由路径不用/开头
         path: "news",
-        component:HomeNews
+        component: HomeNews
       },
       {
         path: "message",
-        component:HomeMessage
+        component: HomeMessage
       }
-    ]
+    ],
+    meta: {
+      title: '首页'
+    }
   },
   {
     path: '/about',
-    component: About
+    component: About,
+    meta: {
+      title: '关于'
+    }
   },
   {
     //动态路由
     path: "/user/:userId",
-    component: User
+    component: User,
+    meta: {
+      title: '用户'
+    }
   },
   {
     path: "/profile",
-    component:Profile
+    component: Profile,
+    meta: {
+      title: '我的'
+    }
+
   }
 ]
 
 const router = new vueRouter({
   routes,
   //观察url变化
-  mode:'history'
+  mode: 'history'
 })
 
+router.beforeEach((to, from, next) => {
+  next()
+  document.title = to.matched[0].meta.title
+})
 export default router

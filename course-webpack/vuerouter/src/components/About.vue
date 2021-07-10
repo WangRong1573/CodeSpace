@@ -7,7 +7,13 @@
 
 <script>
 export default {
-  name: "About"
+  name: "About",
+
+  //   created() {
+  //     console.log("about")
+  //     document.title = 'about'
+  //
+  // }
 }
 </script>
 
