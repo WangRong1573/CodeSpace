@@ -10,6 +10,7 @@ const About = ()=> import('../components/About')
 const User = ()=> import('../components/User')
 const HomeNews = ()=> import('../components/HomeNews')
 const HomeMessage = ()=> import('../components/HomeMessage')
+const Profile = ()=> import('../components/Profile')
 
 
 Vue.use(vueRouter)
@@ -48,6 +49,10 @@ const routes = [
     //动态路由
     path: "/user/:userId",
     component: User
+  },
+  {
+    path: "/profile",
+    component:Profile
   }
 ]
 
