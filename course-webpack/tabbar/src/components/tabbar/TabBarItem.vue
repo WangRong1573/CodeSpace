@@ -3,14 +3,14 @@
   slot会被替换，在有逻辑判断slot显示或者样式显示的情况时，比如动态属性，属性判断等，最好外层包div，将逻辑写在div中，插槽写在div内控制
   -->
   <div class="tab-bar-item" @click="itemClick">
-    <div v-if="isActive">
+    <div v-if="!isActive">
       <slot name="item-img"></slot>
     </div>
     <div v-else>
       <slot name="item-img-active"></slot>
     </div>
-    <div>
-      <slot :class="{active:isActive}" name="item-text"></slot>
+    <div :style="activeStyle">
+      <slot  name="item-text"></slot>
     </div>
   </div>
 </template>
@@ -19,11 +19,24 @@
 export default {
   name: "TabBarItem",
   props:{
-    path:String
+    path:String,
+    activeColor:{
+      type:String,
+      default:'red'
+    }
   },
   data(){
     return {
-      isActive:true
+      // isActive:true
+    }
+  },
+  computed:{
+    isActive(){
+      //  '/home' .indexOf('/home') 包含就说明是激活状态
+      return this.$route.path.indexOf(this.path) !== -1
+    },
+    activeStyle(){
+      return this.isActive ? {color:this.activeColor} : {}
     }
   },
   methods:{
@@ -49,4 +62,7 @@ export default {
   /*去除图片底部3个px的高度*/
   vertical-align: middle;
 }
+/*.active{*/
+/*  color: red;*/
+/*}*/
 </style>
