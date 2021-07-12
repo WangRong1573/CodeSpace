@@ -1,13 +1,28 @@
 <template>
   <div class="tab-bar-item">
-    <slot name="item-img"></slot>
-    <slot name="item-text"></slot>
+<!--    注意点：
+  slot会被替换，在有逻辑判断slot显示或者样式显示的情况时，比如动态属性，属性判断等，最好外层包div，将逻辑写在div中，插槽写在div内控制
+-->
+    <div v-if="isActive">
+      <slot name="item-img"></slot>
+    </div>
+    <div v-else>
+      <slot name="item-img-active"></slot>
+    </div>
+    <div>
+      <slot :class="{active:isActive}" name="item-text"></slot>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "TabBarItem"
+  name: "TabBarItem",
+  data(){
+    return {
+      isActive:true
+    }
+  }
 }
 </script>
 
