@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+需求前提：如果一个需求需要发送两个请求，当两个请求都拿到结果时，才会做下一步，怎么判断两个请求都成功？
+-->
+<script>
+  Promise.all([
+      new Promise((resolve, reject)=>{
+        //使用setTimeOut来模拟网络请求
+        setTimeout(()=>{
+          resolve('result-1')
+        },2000)
+      }),
+      new Promise((resolve, reject) => {
+        setTimeout(()=>{
+          resolve('result-2')
+        },1000)
+      })
+  ]).then(results=>{
+    //会将两次的请求结果放在数组中，下标0为第一次网络请求的结果，下标1位第二次网络请求的结果
+    console.log(results);
+  })
+</script>
+</body>
+</html>
