@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  <!--  先写一个回调地狱demo-->
+  setTimeout(() => {
+    console.log("hello world");
+    setTimeout(() => {
+      console.log("hello vue");
+      setTimeout(() => {
+        console.log("hello java");
+      }, 2000)
+    }, 2000)
+  }, 2000)
+
+  //Promise可以优雅的解决回调地狱问题
+  //  一般用于异步操作时使用
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, 2000)
+  }).then(() => {
+    console.log("hello world2");
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve()
+      }, 2000)
+    })
+  }).then(() => {
+    console.log("hello vue2");
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve()
+      }, 2000)
+    })
+  }).then(() => {
+    console.log("hello java2");
+  })
+
+
+</script>
+</body>
+</html>

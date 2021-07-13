@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('this is success')
+    }, 2000)
+  }).then(data => {
+    console.log(data);
+  })
+
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      //resolve('this is success')
+      reject('this is fail')
+    }, 2000)
+  }).then(data => {
+    console.log(data);
+  }).catch(err => {
+    console.log(err);
+  })
+
+  console.log("----------------------");
+
+  //另一种写法，.then可以传入两个函数，第一个是resolve，第二个是reject
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      //resolve('hello resolve success')
+
+      reject('reject fail')
+    }, 2000)
+  }).then(data => {
+    console.log(data);
+  }, err => {
+    console.log(err);
+  })
+</script>
+</body>
+</html>
