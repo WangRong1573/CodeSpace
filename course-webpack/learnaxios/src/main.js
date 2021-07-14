@@ -118,3 +118,13 @@ request2({
   console.log(err);
 })
 
+//写法同上
+import {request3} from "./network/request";
+request3({
+  url:'/home/multidata'
+}).then(res=>{
+  console.log(res);
+}).catch(err=>{
+  console.log(err);
+})
+

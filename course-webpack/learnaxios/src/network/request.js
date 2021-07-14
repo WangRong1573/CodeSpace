@@ -34,3 +34,16 @@ export function request2(config) {
 
   }))
 }
+
+export function request3(config) {
+  return new Promise(((resolve, reject) => {
+    const instance3 = axios.create({
+      baseURL: 'http://123.207.32.32:8000',
+      timeout: 5000
+    })
+
+    //因为本身返回了类型就是一个Promise
+    return instance3(config)
+
+  }))
+}
