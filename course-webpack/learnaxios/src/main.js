@@ -8,10 +8,14 @@ new Vue({
   el: '#app',
   render: h => h(App)
 })
+//全局配置
+axios.defaults.baseURL = 'http://123.207.32.32:8000'
+//超时时间，单位是毫秒
+axios.defaults.timeout = 5000
 
 axios({
   //默认get请求
-  url: 'http://123.207.32.32:8000/home/multidata',
+  url: '/home/multidata',
   //method:'post' ,可以发送post请求
 }).then(res => {
   console.log(res);
@@ -19,7 +23,7 @@ axios({
 
 //带参数的get请求
 axios({
-  url: 'http://123.207.32.32:8000/home/data',
+  url: '/home/data',
   params: {
     type: 'pop',
     page: 1
@@ -30,9 +34,9 @@ axios({
 
 //发送并发请求
 axios([axios({
-  url: 'http://123.207.32.32:8000/home/multidata'
+  url: '/home/multidata'
 }), axios({
-  url: 'http://123.207.32.32:8000/home/data',
+  url: '/home/data',
   params: {
     type: 'sell',
     page: 3
@@ -45,9 +49,9 @@ axios([axios({
 
 //并发请求的结果处理另一种方式
 axios([axios({
-  url: 'http://123.207.32.32:8000/home/multidata'
+  url: '/home/multidata'
 }), axios({
-  url: 'http://123.207.32.32:8000/home/data',
+  url: '/home/data',
   params: {
     type: 'sell',
     page: 3
