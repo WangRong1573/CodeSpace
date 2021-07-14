@@ -41,6 +41,21 @@ export function request3(config) {
       timeout: 5000
     })
 
+    //axios的请求拦截器
+  instance3.interceptors.request.use(config =>{
+    //请求拦截，比如登录
+    return config
+  },error => {
+  //  请求拒绝
+  })
+
+  //响应拦截
+  instance3.interceptors.response.use(res=>{
+    //响应成功
+    return res.data
+  },error => {
+  //响应失败
+  })
     //因为本身返回了类型就是一个Promise
     return instance3(config)
 }
