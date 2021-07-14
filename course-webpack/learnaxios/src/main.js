@@ -70,4 +70,32 @@ const obj = {
 
 const {name,age,height} = obj;
 
+//因为在实际开发中，baseUrl可能不同，所以使用axios的实例,每个实例就可以有独立的配置
+const instance = axios.create({
+  baseURL:'http://127.0.2.23:8000',
+  timeout:5000
+})
+instance({
+  url:'/home/a'
+})
+
+instance({
+  url:'/home/b',
+  params:{
+    p1:'',
+    p2:''
+  }
+})
+
+const instance2 = axios.create({
+  baseURL:'http://132.233.23.2',
+  timeout:2000,
+  headers:{
+
+  }
+})
+
+instance2({
+  url:'/profile/a'
+})
 
