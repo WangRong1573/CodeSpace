@@ -108,3 +108,13 @@ request({
   console.log(err);
 })
 
+//使用promise写法
+import {request2} from "./network/request";
+request2({
+  url:'/home/multidata'
+}).then(res=>{
+  console.log(res);
+}).catch(err=>{
+  console.log(err);
+})
+
