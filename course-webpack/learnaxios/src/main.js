@@ -56,46 +56,55 @@ axios([axios({
     type: 'sell',
     page: 3
   }
-})]).then(axios.spread((res1,res2)=>{
+})]).then(axios.spread((res1, res2) => {
   console.log(res1);
   console.log(res2);
 }))
 
 //对象的解构
 const obj = {
-  name:'zs',
-  age:18,
-  height:1.88
+  name: 'zs',
+  age: 18,
+  height: 1.88
 }
 
-const {name,age,height} = obj;
+const {name, age, height} = obj;
 
 //因为在实际开发中，baseUrl可能不同，所以使用axios的实例,每个实例就可以有独立的配置
 const instance = axios.create({
-  baseURL:'http://127.0.2.23:8000',
-  timeout:5000
+  baseURL: 'http://127.0.2.23:8000',
+  timeout: 5000
 })
 instance({
-  url:'/home/a'
+  url: '/home/a'
 })
 
 instance({
-  url:'/home/b',
-  params:{
-    p1:'',
-    p2:''
+  url: '/home/b',
+  params: {
+    p1: '',
+    p2: ''
   }
 })
 
 const instance2 = axios.create({
-  baseURL:'http://132.233.23.2',
-  timeout:2000,
-  headers:{
-
-  }
+  baseURL: 'http://132.233.23.2',
+  timeout: 2000,
+  headers: {}
 })
 
 instance2({
-  url:'/profile/a'
+  url: '/profile/a'
+})
+console.log("-----------------------------------------------------------");
+//封装后发送网络请求
+import {request} from "./network/request";
+
+request({
+  url: '/home/multidata'
+}, res => {
+  console.log(res);
+}, err => {
+  console.log(err);
 })
 
