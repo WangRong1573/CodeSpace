@@ -25,6 +25,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void add(User user) {
+        //在用户注册之前先校验用户名是否已经存在
+        if (userDao.findByUserName(user.getUsername()) != null){
+            throw new RuntimeException("用户名已存在");
+        }
         user.setStatus("已激活");
         user.setRegisterTime(new Date());
         userDao.add(user);

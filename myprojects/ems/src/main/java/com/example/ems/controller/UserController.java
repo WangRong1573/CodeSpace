@@ -63,7 +63,7 @@ public class UserController {
         }catch (Exception e){
             e.printStackTrace();
             map.put("state",false);
-            map.put("respMsg","注册失败，请稍后再试");
+            map.put("respMsg",e.getMessage());
         }
         return map;
     }

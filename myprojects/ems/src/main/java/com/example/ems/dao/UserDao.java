@@ -6,4 +6,11 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserDao {
     void add(User user);
+
+    /**
+     * 根据用户名查询是否已经存在
+     * @param username
+     * @return
+     */
+    User findByUserName(String username);
 }
