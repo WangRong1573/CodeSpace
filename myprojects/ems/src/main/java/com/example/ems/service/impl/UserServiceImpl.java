@@ -33,4 +33,17 @@ public class UserServiceImpl implements UserService {
         user.setRegisterTime(new Date());
         userDao.add(user);
     }
+
+    @Override
+    public User login(User user) {
+        //根据用户输入用户名查询
+        User userDB = userDao.findByUserName(user.getUsername());
+        if (userDB == null){
+            throw new RuntimeException("用户名不存在");
+        }
+        if (!userDB.getPassword().equals(user.getPassword())){
+            throw new RuntimeException("密码错误");
+        }
+        return userDB;
+    }
 }

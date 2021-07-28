@@ -39,7 +39,7 @@
 									username:
 								</td>
 								<td valign="middle" align="left">
-									<input type="text" class="inputgri" name="name" />
+									<input type="text" class="inputgri" v-model="user.username" />
 								</td>
 							</tr>
 							<tr>
@@ -47,12 +47,12 @@
 									password:
 								</td>
 								<td valign="middle" align="left">
-									<input type="password" class="inputgri" name="pwd" />
+									<input type="password" class="inputgri" v-model="user.password" />
 								</td>
 							</tr>
 						</table>
 						<p>
-							<input type="submit" class="button" value="Submit &raquo;" />
+							<input type="button" @click="login" class="button" value="Submit &raquo;" />
 							&nbsp;&nbsp;
 							<a href="">注册</a>
 						</p>
@@ -67,3 +67,26 @@
 		</div>
 	</body>
 </html>
+<script src="js/vue.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+	let app = new Vue({
+		el:"#wrap",
+		data:{
+			user:{}
+		},
+		methods:{
+			login(){
+				console.log(this.user);
+				axios.post("http://localhost:8989/ems/user/login",this.user).then(res=>{
+					if (res.data.state){
+						alert(res.data.respMsg);
+						location.href="/ems/emplist.html"
+					}else {
+						alert(res.data.respMsg);
+					}
+				})
+			}
+		}
+	})
+</script>

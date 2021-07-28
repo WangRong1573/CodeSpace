@@ -67,4 +67,25 @@ public class UserController {
         }
         return map;
     }
+
+    /**
+     * 登录
+     * @param user
+     * @return
+     */
+    @PostMapping("/login")
+    public Map<String,Object> login(@RequestBody User user){
+        log.info("当前用户信息为：[{}]",user.toString());
+        HashMap<String, Object> map = new HashMap<>();
+        try {
+            userService.login(user);
+            map.put("state",true);
+            map.put("respMsg","登录成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            map.put("state",false);
+            map.put("respMsg",e.getMessage());
+        }
+        return map;
+    }
 }
